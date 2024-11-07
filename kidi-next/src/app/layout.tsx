@@ -4,7 +4,7 @@ import Footer from "@/components/layout/Footer";
 import "@/assets/scss/front.scss"; // scss 임포트를 이렇게 하는듯
 
 export const metadata: Metadata = {
-    title: "보험개발원 - 실손24",
+    title: "보험개발원 - 실손 24",
     description: "실손24 설명",
 };
 
