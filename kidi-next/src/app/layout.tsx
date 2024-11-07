@@ -21,7 +21,9 @@ export default function RootLayout({
             <body>
                 <Header />
                 <div id="wrap" className="">
-                    {children}
+                    <section class="kidi-wrap">
+                        <div id="container">{children}</div>
+                    </section>
                 </div>
                 <Footer />
             </body>
