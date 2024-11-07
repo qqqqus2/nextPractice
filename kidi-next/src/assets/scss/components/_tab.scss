@@ -1,0 +1,273 @@
+/*** 공통 탭 시작 ***/
+
+/* 스크롤 방식 탭 시작 */
+.tab-line {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  z-index: 25;
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.tab-menu {
+  margin: 0 -2.4rem;
+  overflow: hidden;
+  position: relative;
+}
+.popup {
+  .tab-menu {
+    &::before,
+    &:after {
+      content: none;
+    }
+  }
+}
+
+.tab-scroll {
+  position: relative;
+  @include scroll-x;
+  @include scroll-hide;
+  // &.inner {
+  //   margin: 0 -2.4rem;
+  //   @include media-min-width(1025) {
+  //     margin: 0;
+  //   }
+  // }
+}
+.tab-list {
+  position: relative;
+  display: inline-flex;
+  min-width: 100%;
+  white-space: nowrap;
+  text-align: center;
+  padding: 0 2.4rem;
+  .tab {
+    a,
+    button {
+      text-decoration: none;
+      // &:focus {
+      //   outline-offset: -0.2rem;
+      //   outline-width: 0.15rem;
+      // }
+    }
+  }
+}
+.tab {
+  position: relative;
+  text-align: center;
+  width: auto;
+}
+/* 라운드 형태의 탭  */
+.tab-round-menu {
+  &::before,
+  &:after {
+    content: '';
+    display: block;
+    width: 3rem;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0rem;
+    z-index: 50;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+  }
+  &::after {
+    left: auto;
+    right: 0rem;
+    transform: rotate(-180deg);
+  }
+
+  &.first-active {
+    &::before {
+      content: none;
+    }
+  }
+  &.last-active {
+    &::after {
+      content: none;
+    }
+  }
+  .tab-list {
+    gap: 0 0.6rem;
+    padding: 0;
+  }
+  .tab {
+    a,
+    button {
+      font-size: 1.4rem;
+      padding: 1rem 2rem;
+      line-height: 2rem;
+      font-weight: 700;
+      border-radius: 9rem;
+      background-color: $line-color;
+      display: inline-block;
+      color: $text-body-color;
+    }
+    &.active > a,
+    &.active > button {
+      background-color: $base-txt-color;
+      color: $white-color;
+    }
+  }
+}
+/* 라인 형태의 탭 */
+.tab-line-menu {
+  position: relative;
+  @include media-min-width(1025) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .tab-list {
+    gap: 0 2rem;
+    @include media-min-width(1025) {
+      padding: 0;
+    }
+  }
+  .tab-line {
+    height: 0.3rem;
+    // border-radius: 0.4rem 0.4rem 0 0;
+    background: $base-txt-color;
+  }
+  .tab-list {
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: auto;
+      height: 0.1rem;
+      background: $box-line;
+    }
+  }
+  .tab {
+    position: relative;
+    text-align: center;
+    @include media-min-width(1025) {
+      width: 100%;
+    }
+    // width: 100%;
+    & > a,
+    & > button {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 4.8rem;
+      color: $text-sub-color;
+      font-weight: 600;
+      font-size: 1.6rem;
+      line-height: 2.4rem;
+      overflow: hidden;
+      padding: 0 0.3rem;
+      outline-offset: -0.1rem;
+      transition: 0.3s;
+      @include media-min-width(1025) {
+        display: flex;
+        width: 100%;
+      }
+    }
+    &.active > a,
+    &.active > button {
+      color: $base-txt-color;
+      &:after {
+        left: 0;
+        width: 100%;
+        opacity: 1;
+      }
+    }
+  }
+  &.tab-fixed {
+    .tab-list {
+      padding: 0;
+      // padding: 0 0.8rem;
+      &:before {
+        left: 0;
+        right: 0;
+      }
+    }
+  }
+}
+.lg-size {
+  .tab-line-menu {
+    .tab-line {
+      display: none;
+    }
+    .tab {
+      &.active {
+        &::before {
+          content: '';
+          display: block;
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          left: 0;
+          height: 0.3rem;
+          background: $base-txt-color;
+        }
+      }
+    }
+  }
+}
+/* 스크롤 형태의 탭 끝 */
+
+/* 일반 형태의 탭 시작 */
+.common-type {
+  margin-left: 0;
+  margin-right: 0;
+
+  .tab-list {
+    display: flex;
+    width: 100%;
+    background-color: #f4f4f7;
+    border-radius: 0.8rem;
+    padding: 0;
+    .tab {
+      flex: 1 1 auto;
+      font-size: 1.6rem;
+      line-height: 2.8rem;
+      padding: 0.9rem 1rem;
+      font-weight: 500;
+      width: 100%;
+      cursor: pointer;
+
+      a {
+        display: block;
+        height: 100%;
+        color: $text-sub-color;
+      }
+      &.active {
+        border-radius: 0.8rem;
+        background-color: $white-color;
+        border: 0.1rem solid $primary-color;
+        box-shadow: 0.2rem 0.2rem 0.8rem 0 rgba(0, 0, 0, 0.05);
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: $primary-color;
+        a {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}
+.tabFocus {
+  .common-type {
+    .tab-list {
+      .tab {
+        &:focus {
+          outline: 0.2rem dashed $primary-color;
+          outline-offset: -0.2rem;
+        }
+      }
+    }
+  }
+}
+/* 일반 형태의 탭 끝 */
+
+/*** 공통 탭 끝 ***/

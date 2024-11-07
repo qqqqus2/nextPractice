@@ -1,0 +1,92 @@
+/** 아코디언 스타일 시작 **/
+.accordion {
+  color: #1a1b1d;
+  border-bottom: 0.1rem solid $box-line;
+  em {
+    width: 2.2rem;
+    top: 2rem;
+    left: 2.4rem;
+    font-weight: 700;
+    @include media-min-width(1025) {
+      width: 2.4rem;
+    }
+  }
+  .accordion-item {
+    background-color: #f6f8fa;
+  }
+  .accordion-header {
+    display: flex;
+    padding: 2rem 5.4rem 2rem 2.4rem;
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 2.6rem;
+    background-color: $white-color;
+    cursor: pointer;
+    position: relative;
+    border-top: 0.1rem solid #ddd;
+    // &:focus {
+    //   // outline: 0.1rem dashed $error-color
+    // }
+    @include media-min-width(1025) {
+      @include font(2rem, 700, 2.8rem);
+    }
+    &:after {
+      content: '';
+      display: inline-block;
+      width: 2rem;
+      height: 2rem;
+      position: absolute;
+      right: 2.4rem;
+      top: calc(50% - 1rem);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M4.29289 8.29289C4.68342 7.90237 5.31658 7.90237 5.70711 8.29289L12 14.5858L18.2929 8.29289C18.6834 7.90237 19.3166 7.90237 19.7071 8.29289C20.0976 8.68342 20.0976 9.31658 19.7071 9.70711L12.7071 16.7071C12.3166 17.0976 11.6834 17.0976 11.2929 16.7071L4.29289 9.70711C3.90237 9.31658 3.90237 8.68342 4.29289 8.29289Z' fill='%23727272'/%3E%3C/svg%3E%0A");
+    }
+    &[aria-expanded='true'] {
+      border-bottom: 0.1rem solid #ddd;
+    }
+    &[aria-expanded='true']:after {
+      -webkit-transform: rotate(-180deg);
+      transform: rotate(-180deg);
+    }
+  }
+  .accordion-content {
+    overflow: hidden;
+    max-height: 0;
+    font-size: 1.5rem;
+    // line-height: 2.6rem;
+    // @include media-min-width(1025) {
+    //   line-height: 2.8rem;
+    // }
+    font-weight: 500;
+    position: relative;
+    & > div {
+      display: flex;
+      align-items: center;
+      padding: 2rem 2.4rem;
+      background-color: #f6f8fa;
+    }
+    em {
+      align-self: flex-start;
+      @include font(1.8rem, 700, 2.6rem);
+      @include media-min-width(1025) {
+        @include font(2rem, 700, 2.8rem);
+      }
+    }
+  }
+  .accordion-inner {
+    flex: 1;
+    word-break: break-word;
+  }
+  &.type-treatment {
+    margin: 1.3rem -2.4rem 0;
+    border-bottom: 0.1rem solid $box-line;
+    .accordion-content > div {
+      display: block;
+      padding: 2.4rem 2.4rem 1.7rem;
+      background-color: #f8fbff;
+    }
+  }
+}
+/** 아코디언 스타일 끝 **/

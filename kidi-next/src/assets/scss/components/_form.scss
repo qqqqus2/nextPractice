@@ -1,0 +1,1609 @@
+/* input reset */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+/* 공통 input 스타일 시작 */
+.input-box {
+  position: relative;
+  font-size: 1.6rem;
+
+  &.inline-flex {
+    .inline-flex + .btn {
+      margin-left: 0.8rem;
+      min-width: 10rem;
+      width: auto;
+
+      @include media-min-width(1025) {
+        margin-left: 1.2rem;
+        min-width: 20rem;
+      }
+    }
+  }
+
+  input,
+  .btn-keypad {
+    color: $input-txt;
+    border-color: transparent;
+    background-color: transparent;
+    font-weight: 400;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 1.6rem;
+
+    &:focus,
+    &:hover {
+      border-color: transparent;
+      outline: none;
+    }
+  }
+
+  .inline-flex {
+    border-style: solid;
+    border-color: $input-line;
+  }
+
+  &.focus {
+    .inline-flex {
+      border-color: $input-focus-line;
+      // // outline: 0.1rem dashed $error-color;
+    }
+  }
+
+  &.hasValue {
+    .input-etc {
+      button {
+        &.input-del {
+          width: 2rem;
+          flex: 1 1 auto;
+          opacity: 1;
+          visibility: visible;
+          margin-left: 0.4rem;
+        }
+      }
+    }
+  }
+
+  .btn-search {
+    flex: none;
+    align-self: flex-start;
+    width: 2.4rem;
+    height: 2.4rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 2.4rem;
+    border-radius: 0;
+    padding: 0;
+    margin-left: 1.2rem !important;
+    background-color: transparent;
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10 4C6.68629 4 4 6.68629 4 10C4 13.3137 6.68629 16 10 16C13.3137 16 16 13.3137 16 10C16 6.68629 13.3137 4 10 4ZM2 10C2 5.58172 5.58172 2 10 2C14.4183 2 18 5.58172 18 10C18 11.8487 17.3729 13.551 16.3199 14.9056L21.7071 20.2929C22.0976 20.6834 22.0976 21.3166 21.7071 21.7071C21.3166 22.0976 20.6834 22.0976 20.2929 21.7071L14.9056 16.3199C13.551 17.3729 11.8487 18 10 18C5.58172 18 2 14.4183 2 10Z' fill='black'/%3E%3C/svg%3E%0A");
+  }
+
+  // 필수 요소
+  .required {
+    font-size: 1.3rem;
+    font-weight: 400;
+    line-height: 2rem;
+    display: block;
+
+    &::after {
+      content: '*';
+      display: inline-block;
+      color: $error-color;
+    }
+  }
+
+  // 인풋 이외의 요소들
+  .input-etc {
+    position: relative;
+    margin-left: auto;
+    display: inline-flex;
+    //gap: 0 0.8rem;
+    padding-left: 1.2rem;
+    align-items: center;
+
+    .remain-time {
+      color: $primary-color;
+      word-break: normal;
+      @include font(1.3rem, 400, 1.8rem);
+      word-break: keep-all;
+    }
+
+    button {
+      width: 2rem;
+      height: 2rem;
+      padding: 0;
+      font-size: 0;
+      margin: 0;
+      background-size: contain;
+      background-position: center;
+      border: 0;
+      background-repeat: no-repeat;
+
+      &.input-del {
+        opacity: 0;
+        width: 0;
+        visibility: hidden;
+        flex: 0 0 auto;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M1.6665 10.0003C1.6665 5.39795 5.39746 1.66699 9.99984 1.66699C14.6022 1.66699 18.3332 5.39795 18.3332 10.0003C18.3332 14.6027 14.6022 18.3337 9.99984 18.3337C5.39746 18.3337 1.6665 14.6027 1.6665 10.0003ZM7.19142 7.19191C7.48728 6.89606 7.96695 6.89606 8.2628 7.19191L9.99984 8.92895L11.7369 7.19191C12.0327 6.89606 12.5124 6.89606 12.8083 7.19191C13.1041 7.48776 13.1041 7.96743 12.8083 8.26329L11.0712 10.0003L12.8083 11.7374C13.1041 12.0332 13.1041 12.5129 12.8083 12.8087C12.5124 13.1046 12.0327 13.1046 11.7369 12.8087L9.99984 11.0717L8.2628 12.8087C7.96695 13.1046 7.48728 13.1046 7.19142 12.8087C6.89557 12.5129 6.89557 12.0332 7.19142 11.7374L8.92846 10.0003L7.19142 8.26329C6.89557 7.96743 6.89557 7.48776 7.19142 7.19191Z' fill='%23727272'/%3E%3C/svg%3E");
+      }
+
+      &.show-toggle {
+        margin-left: 1.2rem;
+      }
+
+      &.show-toggle.off {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M1.91074 1.91058C2.23618 1.58514 2.76382 1.58514 3.08926 1.91058L5.62283 4.44416C6.92414 3.73567 8.41621 3.33317 10.0004 3.33317C14.1061 3.33317 17.5794 6.03189 18.7472 9.75016C18.7983 9.91272 18.7983 10.087 18.7472 10.2496C18.2033 11.9814 17.1603 13.4903 15.7877 14.609L18.0893 16.9106C18.4147 17.236 18.4147 17.7637 18.0893 18.0891C17.7638 18.4145 17.2362 18.4145 16.9107 18.0891L1.91074 3.08909C1.58531 2.76366 1.58531 2.23602 1.91074 1.91058ZM6.8637 5.68503L8.30682 7.12814C8.80302 6.83508 9.38218 6.6665 10 6.6665C11.841 6.6665 13.3333 8.15889 13.3333 9.99984C13.3333 10.6177 13.1648 11.1968 12.8717 11.693L14.6017 13.423C15.7242 12.5497 16.5914 11.3648 17.0739 9.99985C16.0441 7.08604 13.2648 4.99984 10.0004 4.99984C8.87957 4.99984 7.81751 5.2452 6.8637 5.68503ZM11.6103 10.4317C11.6471 10.294 11.6667 10.1493 11.6667 9.99984C11.6667 9.07936 10.9205 8.33317 10 8.33317C9.85054 8.33317 9.70582 8.35273 9.56816 8.38949L11.6103 10.4317ZM3.85407 6.81132C4.22106 7.08905 4.29343 7.6117 4.0157 7.9787C3.5552 8.5872 3.18569 9.26762 2.9269 9.99981C3.95666 12.9136 6.73592 14.9998 10.0004 14.9998C10.4819 14.9998 10.9521 14.9546 11.4071 14.8683C11.8593 14.7825 12.2954 15.0796 12.3811 15.5318C12.4669 15.9839 12.1698 16.42 11.7176 16.5058C11.1608 16.6114 10.5866 16.6665 10.0004 16.6665C5.89461 16.6665 2.42133 13.9678 1.2535 10.2495C1.20245 10.087 1.20245 9.91265 1.2535 9.7501C1.57176 8.73681 2.06092 7.79985 2.68669 6.97295C2.96442 6.60595 3.48707 6.53359 3.85407 6.81132Z' fill='%2392969F'/%3E%3C/svg%3E");
+      }
+
+      &.show-toggle.on {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9.98458 13.9438C9.01217 13.9431 8.07978 13.5698 7.39201 12.9058C6.70424 12.2419 6.31729 11.3414 6.31608 10.4022C6.31608 8.44895 7.9615 6.86051 9.98458 6.86051C10.957 6.86121 11.8894 7.23452 12.5771 7.89851C13.2649 8.5625 13.6519 9.46292 13.6531 10.4022C13.6531 12.3554 12.0077 13.9438 9.98458 13.9438ZM10.0002 3.33301C4.94016 3.33301 0.833496 7.61842 0.833496 10.4163C0.833496 13.1487 5.02908 17.4997 10.0002 17.4997C14.9712 17.4997 19.1668 13.1487 19.1668 10.4163C19.1668 7.61842 15.0592 3.33301 10.0002 3.33301Z' fill='black'/%3E%3Cpath d='M10.0002 12.1872C11.0127 12.1872 11.8335 11.3943 11.8335 10.4163C11.8335 9.43834 11.0127 8.64551 10.0002 8.64551C8.98764 8.64551 8.16683 9.43834 8.16683 10.4163C8.16683 11.3943 8.98764 12.1872 10.0002 12.1872Z' fill='black'/%3E%3C/svg%3E");
+      }
+
+      &.btn-search {
+        margin-left: 1.2rem;
+      }
+    }
+  }
+
+  // input text type-1
+  &.textType-1 {
+    box-sizing: border-box;
+
+    input {
+      padding: 0.8rem 0;
+    }
+
+    .inline-flex {
+      width: 100%;
+      align-items: center;
+      border-bottom-width: 0.1rem;
+    }
+  }
+
+  // input text type-2
+  &.textType-2 {
+    .inline-flex {
+      width: 100%;
+      align-items: center;
+      border-radius: 0.8rem;
+      border-width: 0.1rem;
+      padding: 1.1rem 1.6rem;
+      background-color: $white-color;
+      &.p-0 {
+        padding: 0;
+      }
+      &.disabled {
+        border-color: $input-disabled-line;
+        background-color: $input-disabled-bg;
+
+        input {
+          color: $input-disabled-txt;
+        }
+      }
+
+      &.readonly {
+        background-color: #f4f4f7;
+        border-color: #eee;
+      }
+
+      &.bg-gray {
+        background-color: $readonly-color;
+      }
+
+      input {
+        line-height: 2.4rem;
+
+        &::placeholder {
+          color: $placeholder;
+        }
+      }
+      .placeholder {
+        color: $placeholder;
+        font-weight: 400;
+      }
+    }
+
+    &.readOnly {
+      .inline-flex {
+        background-color: $readonly-color;
+      }
+    }
+    div.text {
+      word-break: break-all;
+    }
+    .btn-keypad {
+      height: 4.8rem;
+      text-align: left;
+      padding: 0 1.6rem;
+      display: flex;
+      align-items: center;
+      color: $placeholder;
+      span {
+        line-height: 2.4rem;
+        top: 0.4rem;
+        position: relative;
+        font-weight: 600;
+        letter-spacing: 0.2rem;
+        color: #222;
+      }
+    }
+  }
+
+  &.error {
+    .inline-flex {
+      border-color: $error-color;
+    }
+  }
+}
+.select-btn {
+  .input-box {
+    &.textType-2 .inline-flex {
+      background-color: $white-color;
+      border-color: $input-line;
+    }
+  }
+}
+/* 공통 input 스타일 끝 */
+
+/* error text 시작 */
+.error-txt {
+  color: $error-color;
+  @include font(1.6rem, 400, 2.4rem);
+  padding: 0.6rem 1.4rem;
+  @include media-max-width(480) {
+    @include font(1.4rem, 400, 2rem);
+    padding: 0.6rem 0;
+  }
+}
+/* error text 끝 */
+
+/* 일반 셀렉트박스 시작 */
+.select-box {
+  select {
+    width: 100%;
+    border: 0;
+    font-size: 1.6rem;
+    height: 4.8rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 1.1rem 1.6rem;
+    color: $input-txt;
+    border-radius: 0.8rem;
+    border: 0.1rem solid $input-line;
+    background-color: $white-color;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M3.57757 6.91058C3.90301 6.58514 4.43065 6.58514 4.75609 6.91058L10.0002 12.1547L15.2442 6.91058C15.5697 6.58514 16.0973 6.58514 16.4228 6.91058C16.7482 7.23602 16.7482 7.76366 16.4228 8.08909L10.5894 13.9224C10.264 14.2479 9.73634 14.2479 9.41091 13.9224L3.57757 8.08909C3.25214 7.76366 3.25214 7.23602 3.57757 6.91058Z' fill='black'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 2rem;
+    background-position: calc(100% - 1.6rem) center;
+    text-overflow: ellipsis;
+    &:disabled {
+      color: $base-txt-color;
+      border-color: $input-disabled-line;
+      background-color: $input-disabled-bg;
+      background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M3.57709 6.91107C3.90252 6.58563 4.43016 6.58563 4.7556 6.91107L9.99967 12.1551L15.2438 6.91107C15.5692 6.58563 16.0968 6.58563 16.4223 6.91107C16.7477 7.23651 16.7477 7.76414 16.4223 8.08958L10.5889 13.9229C10.2635 14.2484 9.73586 14.2484 9.41042 13.9229L3.57709 8.08958C3.25165 7.76414 3.25165 7.23651 3.57709 6.91107Z' fill='%23CCCCCC'/%3E%3C/svg%3E%0A");
+    }
+
+    &.readonly {
+      pointer-events: none;
+      background-color: $input-disabled-bg;
+    }
+
+    &:focus {
+      outline: 0.1rem solid $primary-color;
+      outline-offset: 0;
+    }
+  }
+
+  &.error select,
+  select.error {
+    border-color: $error-color;
+  }
+}
+/* 일반 셀렉트박스 끝 */
+
+/* custom 셀렉트박스(현재 사용 안함) 시작 */
+.dropdown {
+  width: 100%;
+
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+
+  .dropdown-button {
+    border-radius: 0.8rem;
+    padding: 1.1rem 1.6rem;
+    background-color: $white-color;
+    border: 0.1rem solid $text-sub-color;
+    border-radius: 0.8rem;
+    position: relative;
+    display: block;
+    text-align: left;
+    width: 100%;
+    &.expanded {
+      color: $primary-color;
+      border-color: $primary-color;
+      font-weight: 600;
+    }
+    &.topExpended {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      border-top: 0;
+    }
+    &.btmExpended {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      border-bottom: 0;
+    }
+    &::before {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 2rem;
+      position: absolute;
+      right: 1.6rem;
+      top: 50%;
+      margin-top: -1rem;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 2rem;
+      transition: 0.1s transform ease-in-out;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M3.57739 6.91058C3.90283 6.58514 4.43047 6.58514 4.7559 6.91058L9.99998 12.1547L15.2441 6.91058C15.5695 6.58514 16.0971 6.58514 16.4226 6.91058C16.748 7.23602 16.748 7.76366 16.4226 8.08909L10.5892 13.9224C10.2638 14.2479 9.73616 14.2479 9.41072 13.9224L3.57739 8.08909C3.25195 7.76366 3.25195 7.23602 3.57739 6.91058Z' fill='%2392969F'/%3E%3C/svg%3E");
+    }
+  }
+}
+.dropdown-list {
+  position: absolute;
+  left: 0;
+  right: 0;
+  max-height: 13rem;
+  overflow: auto;
+  border: 0.1rem solid $primary-color;
+  background-color: $white-color;
+  // box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.1);
+  z-index: 10;
+
+  // display: none;
+  &.btmPosition {
+    bottom: 100%;
+    border-top-width: 0.1rem;
+    border-bottom-width: 0;
+    margin-bottom: -0.4rem;
+    border-top-left-radius: 0.6rem;
+    border-top-right-radius: 0.6rem;
+  }
+  &.topPosition {
+    top: 100%;
+    border-top-width: 0;
+    border-bottom-width: 0.1rem;
+    margin-top: -0.4rem;
+    border-bottom-left-radius: 0.6rem;
+    border-bottom-right-radius: 0.6rem;
+  }
+  &.show {
+    display: block;
+  }
+
+  .dropdown-item {
+    padding: 1rem 1.6rem;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $background-color;
+    }
+  }
+}
+/* custom 셀렉트박스(현재 사용 안함) 끝 */
+
+/* checkbox & radio 시작 */
+// .checkbox input:checked,
+// .radio input:checked,
+// .checkbox input:focus,
+// .radio input:focus {
+//   outline: none !important;
+// }
+.tabFocus {
+  .focus-visible,
+  .focus-visible + span,
+  .imageItem li label,
+  .file-box .btn-date,
+  .file-box .file-label,
+  .file-box .file-txt,
+  .imageItem input,
+  .btn-keypad {
+    &:focus {
+      outline: 0.2rem dashed $primary-color;
+      outline-offset: 0.1rem;
+      // border-radius: 0.4rem;
+      transition: none !important;
+    }
+  }
+  .radio input:focus + .lbl:before,
+  .checkbox input:focus + .lbl:before,
+  .radio-tabType-1 .radio input:focus + i + span,
+  .radio-tabType-2 .radio input:focus + i + span,
+  .radio-type-bar .radio input:focus,
+  .radio-type-btn input:focus + i + span {
+    // outline: 0.1rem dashed $primary-color;
+    // outline-offset: 0.1rem;
+    transition: none !important;
+  }
+  .radio input:focus + .lbl:before,
+  .checkbox input:focus + .lbl:before {
+    outline-offset: 0.2rem;
+  }
+}
+
+.checkbox,
+.radio {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  cursor: pointer;
+  vertical-align: middle;
+  color: $base-txt-color;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  text-wrap: balance;
+  // 토글타입
+  &.toggle-type-1 {
+    input {
+      width: 100%;
+      height: 100%;
+    }
+    .status-info {
+      position: absolute;
+      overflow: hidden;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      clip: rect(0, 0, 0, 0);
+      display: block;
+      font-size: 0.3rem;
+      color: transparent;
+    }
+    .lbl {
+      width: 5.6rem;
+      height: 2.8rem;
+      position: relative;
+      background-color: $placeholder;
+      border: 0.1rem solid $placeholder;
+      border-radius: 1.4rem;
+      padding: 0;
+      &::before {
+        content: '';
+        display: block;
+        width: 2.2rem;
+        height: 2.2rem;
+        position: absolute;
+        left: 0.3rem;
+        top: 50%;
+        border-radius: 50%;
+        transform: translateY(-50%);
+        background-color: $white-color;
+        border-color: $white-color;
+        box-sizing: border-box;
+        transition: 0.1s ease-in-out left;
+      }
+
+      &::after {
+        content: 'OFF';
+        border: none;
+        font-size: 1.2rem;
+        color: $white-color;
+        right: 0.5rem;
+        top: 0.2rem;
+        transform: none;
+        line-height: 2.5rem;
+        font-weight: 600;
+        height: auto;
+        left: auto;
+        width: auto;
+        background-color: transparent;
+        padding: 0;
+        margin: 0;
+        width: auto;
+      }
+      & + span {
+        position: absolute;
+        overflow: hidden;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        clip: rect(0, 0, 0, 0);
+        display: block;
+        font-size: 0.3rem;
+        color: transparent;
+      }
+    }
+    &.sizeModeType {
+      input {
+        width: 100%;
+        height: 100%;
+      }
+      .lbl,
+      input:checked + .lbl {
+        width: 65px;
+        height: 28px;
+        line-height: 24px;
+        min-height: 24px;
+        top: -1px;
+        &::before {
+          width: 22px;
+          height: 22px;
+          left: 3px;
+        }
+        &:after {
+          content: '큰글자';
+          font-size: 12px;
+          right: 5px;
+          line-height: 25px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+      input:checked + .lbl {
+        &::before {
+          left: calc(100% - 24px);
+        }
+        &:after {
+          left: 6px;
+        }
+      }
+    }
+
+    input:disabled + .lbl {
+      background-color: #ccc;
+      border-color: #ccc;
+      &::before {
+        border-color: $white-color;
+      }
+    }
+
+    input:checked:disabled + .lbl {
+      background-color: #bcdafd;
+      border-color: #bcdafd;
+      &::before {
+        border-color: $white-color;
+        background-color: $white-color;
+      }
+    }
+
+    input:focus + .lbl {
+      &::after {
+        outline: none;
+      }
+    }
+
+    input:checked + .lbl {
+      background-color: $primary-color;
+      border-color: $primary-blue4;
+      &::before {
+        background-color: $white-color;
+        border-color: $white-color;
+        left: calc(100% - 2.4rem);
+      }
+      &::after {
+        content: 'ON';
+        transform: none;
+        top: 0.2rem;
+        left: 0.8rem;
+        animation: none;
+      }
+    }
+  }
+
+  span {
+    display: inline-block;
+    line-height: 2rem;
+    padding-top: 0;
+  }
+
+  & + .checkbox,
+  & + .radio {
+    margin-left: 2.4rem;
+  }
+
+  // 싱글 타입
+  &.singleType {
+    input + .lbl {
+      padding-left: 2.4rem;
+    }
+  }
+
+  // 별모양 타입
+  &.favoriteType {
+    margin: 0;
+
+    input + .lbl {
+      top: 0;
+      padding-left: 2.4rem;
+      line-height: 2.4rem;
+      min-height: 2.4rem;
+
+      &:before {
+        border: none;
+        width: 2.4rem;
+        height: 2.4rem;
+        border-radius: 0;
+        transition: 0.3s ease-in-out background;
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.5985 2.27173C11.1719 1.10994 12.8285 1.10994 13.4019 2.27173L15.9743 7.4839L21.7262 8.31971C23.0083 8.50601 23.5203 10.0816 22.5925 10.9859L18.4304 15.043L19.4129 20.7718C19.6319 22.0487 18.2917 23.0225 17.1449 22.4196L12.0002 19.7148L6.85547 22.4196C5.70872 23.0225 4.36844 22.0487 4.58745 20.7718L5.57 15.043L1.40784 10.9859C0.480092 10.0816 0.992034 8.50601 2.27415 8.31971L8.02611 7.4839L10.5985 2.27173ZM12.0002 3.95065L9.71794 8.57499C9.49025 9.03634 9.05013 9.35611 8.541 9.43009L3.43773 10.1716L7.13049 13.7712C7.4989 14.1303 7.66701 14.6477 7.58004 15.1548L6.7083 20.2374L11.2728 17.8377C11.7282 17.5983 12.2722 17.5983 12.7276 17.8377L17.2921 20.2374L16.4203 15.1548C16.3334 14.6477 16.5015 14.1303 16.8699 13.7712L20.5626 10.1716L15.4594 9.43009C14.9503 9.35611 14.5101 9.03634 14.2824 8.57499L12.0002 3.95065Z' fill='%23727272'/%3E%3C/svg%3E%0A");
+      }
+
+      &::after {
+        content: none;
+      }
+    }
+
+    input:disabled + .lbl {
+      &:before {
+        background-color: transparent;
+        background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.5985 2.27173C11.1719 1.10994 12.8285 1.10994 13.4019 2.27173L15.9743 7.4839L21.7262 8.31971C23.0083 8.50601 23.5203 10.0816 22.5925 10.9859L18.4304 15.043L19.4129 20.7718C19.6319 22.0487 18.2917 23.0225 17.1449 22.4196L12.0002 19.7148L6.85547 22.4196C5.70872 23.0225 4.36844 22.0487 4.58745 20.7718L5.57 15.043L1.40784 10.9859C0.480092 10.0816 0.992034 8.50601 2.27415 8.31971L8.02611 7.4839L10.5985 2.27173ZM12.0002 3.95065L9.71794 8.57499C9.49025 9.03634 9.05013 9.35611 8.541 9.43009L3.43773 10.1716L7.13049 13.7712C7.4989 14.1303 7.66701 14.6477 7.58004 15.1548L6.7083 20.2374L11.2728 17.8377C11.7282 17.5983 12.2722 17.5983 12.7276 17.8377L17.2921 20.2374L16.4203 15.1548C16.3334 14.6477 16.5015 14.1303 16.8699 13.7712L20.5626 10.1716L15.4594 9.43009C14.9503 9.35611 14.5101 9.03634 14.2824 8.57499L12.0002 3.95065Z' fill='%23CCCCCC'/%3E%3C/svg%3E%0A");
+      }
+    }
+
+    input:checked + .lbl {
+      &::before {
+        background-color: transparent;
+        background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.5985 2.27173C11.1719 1.10994 12.8285 1.10994 13.4019 2.27173L15.9743 7.4839L21.7262 8.31971C23.0083 8.50601 23.5203 10.0816 22.5925 10.9859L18.4304 15.043L19.4129 20.7718C19.6319 22.0487 18.2917 23.0225 17.1449 22.4196L12.0002 19.7148L6.85547 22.4196C5.70872 23.0225 4.36844 22.0487 4.58745 20.7718L5.57 15.043L1.40784 10.9859C0.480092 10.0816 0.992034 8.50601 2.27415 8.31971L8.02611 7.4839L10.5985 2.27173Z' fill='%231573E1'/%3E%3C/svg%3E%0A");
+      }
+    }
+  }
+
+  // 아이콘 타입
+  &.iconType {
+    margin: 0;
+
+    input + .lbl {
+      top: 0;
+      padding-left: 2.4rem;
+    }
+  }
+
+  // 선택안됨 추가
+  .blind {
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    padding: 0 !important;
+    position: absolute !important;
+  }
+}
+
+.checkbox input,
+.radio input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2.4rem;
+  height: 2.4rem;
+  cursor: pointer;
+  z-index: 3;
+  appearance: none;
+}
+
+.checkbox input + .lbl,
+.radio input + .lbl {
+  position: relative;
+  top: -0.1rem;
+  display: inline-block;
+  line-height: 2.4rem;
+  min-height: 2.4rem;
+  padding: 0 0 0 3.2rem;
+  font-weight: normal;
+  vertical-align: top;
+  word-break: break-all;
+  z-index: 2;
+}
+
+// .focus-visible {
+//   &::before {
+//     outline: 0.1rem dashed $error-color;
+//   }
+// }
+
+.checkbox input + .lbl:before,
+.radio input + .lbl:before {
+  content: '';
+  display: inline-block;
+  height: 2.4rem;
+  width: 2.4rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  box-sizing: border-box;
+  border-radius: 0.6rem;
+}
+
+.radio input + .lbl:before {
+  background-color: $white-color;
+  border: 0.2rem solid $input-line;
+  border-radius: 50%;
+}
+
+.checkbox input + .lbl:before {
+  background-color: $white-color;
+  border: 0.2rem solid $input-line;
+}
+
+// .radio input:focus + .lbl:before,
+// .checkbox input:focus + .lbl:before {
+//   outline: 0.1rem dashed $error-color;
+// }
+
+.checkbox input + .lbl:after {
+  border-radius: 0;
+  width: 0.9rem;
+  height: 0.5rem;
+  top: 0.7rem;
+  left: 0.7rem;
+  border: 0.2rem solid $white-color;
+  border-top: none;
+  border-right: none;
+  background: transparent;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.checkbox input + .lbl:after,
+.radio input + .lbl:after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  background-color: $white-color;
+}
+
+.radio input + .lbl:after {
+  width: 0.8rem;
+  height: 0.8rem;
+  opacity: 0;
+  left: 0.4rem;
+  top: 0.4rem;
+  border-radius: 50%;
+  background-color: $white-color;
+  transform: scale(0);
+}
+
+.checkbox input:disabled + .lbl + span,
+.checkbox input:disabled + .lbl + span {
+  color: $disable-color;
+}
+
+.radio input:checked + .lbl::before,
+.checkbox input:checked + .lbl::before {
+  background-color: $input-focus-line;
+  border-color: $input-focus-line;
+}
+
+.radio input:disabled + .lbl::before,
+.checkbox input:disabled + .lbl::before {
+  background-color: #eee;
+  border-color: #ddd;
+}
+
+.checkbox input:disabled + .lbl::after {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.checkbox input:disabled:checked + .lbl::before {
+  background-color: $primary-blue1;
+  border-color: $primary-blue1;
+}
+
+.checkbox input:checked + .lbl + span,
+.radio input:checked + .lbl + span {
+  font-weight: 400;
+}
+
+.checkbox input:checked + .lbl:after {
+  border-color: $white-color;
+  background: none;
+  top: 1.15rem;
+  left: 0.6rem;
+  transform-origin: left top;
+  transform: rotate(-45deg);
+  animation-timing-function: ease-in-out;
+  animation-duration: 0.5s;
+  animation-name: checkmark;
+}
+
+.radio.type-check input + .lbl:after {
+  border-radius: 0;
+  width: 0.9rem;
+  height: 0.5rem;
+  top: 0.7rem;
+  left: 0.7rem;
+  opacity: 1;
+  border: 0.2rem solid $input-line;
+  border-top: none;
+  border-right: none;
+  background: transparent;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.radio.type-check input:checked + .lbl:after {
+  border-color: $white-color;
+  background: none;
+  top: 1.15rem;
+  left: 0.6rem;
+  width: 0.9rem;
+  height: 0.5rem;
+  transform-origin: left top;
+  transform: rotate(-45deg);
+  animation-timing-function: ease-in-out;
+  animation-duration: 0.5s;
+  animation-name: checkmark;
+}
+
+.radio input:checked + .lbl:after {
+  content: '';
+  position: absolute;
+  width: 0.8rem;
+  height: 0.8rem;
+  left: 1.2rem;
+  top: 50%;
+  background-color: $white-color;
+  transform: translate(-50%, -50%);
+  animation-timing-function: ease-in-out;
+  animation-duration: 0.2s;
+  animation-name: radiomark;
+  opacity: 1;
+}
+
+@keyframes checkmark {
+  0% {
+    height: 0;
+    width: 0;
+    opacity: 1;
+  }
+
+  20% {
+    width: 0;
+    height: 0.5rem;
+    opacity: 1;
+  }
+
+  40% {
+    width: 0.9rem;
+    height: 0.5rem;
+    opacity: 1;
+  }
+
+  100% {
+    width: 0.9rem;
+    height: 0.5rem;
+    opacity: 1;
+  }
+}
+@keyframes radiomark {
+  0% {
+    height: 0;
+    width: 0;
+    opacity: 0;
+  }
+
+  100% {
+    width: 0.8rem;
+    height: 0.8rem;
+    opacity: 1;
+  }
+}
+
+.radio-tabType-1 {
+  display: inline-flex;
+  background-color: $line-color;
+  border-radius: 0.9rem;
+  width: 21rem;
+  padding: 0.3rem;
+
+  .radio {
+    flex: 1 1 auto;
+    width: 100%;
+    margin: 0;
+
+    .lbl {
+      padding: 0;
+      min-height: 0;
+      line-height: 0;
+      display: inline;
+
+      &::before,
+      &::after {
+        content: none;
+      }
+    }
+
+    input {
+      // height: 0;
+      width: 100%;
+      height: 100%;
+      &:checked + .lbl {
+        &::after {
+          content: none;
+        }
+      }
+
+      &:checked + .lbl + span {
+        color: $black-color;
+        background-color: $white-color;
+      }
+    }
+
+    // .focus-visible + span {
+    //   outline: 0.1rem dashed $error-color;
+    // }
+
+    span {
+      display: block;
+      text-align: center;
+      width: 100%;
+      font-size: 1.4rem;
+      line-height: 2rem;
+      padding: 0.7rem 1.4rem;
+      font-weight: 600;
+      color: $text-sub-color;
+      border-radius: 0.6rem;
+    }
+  }
+}
+
+.radio-tabType-2 {
+  display: flex;
+  background-color: $white-color;
+  .radio {
+    flex: 1 1 auto;
+    width: 100%;
+    margin: 0;
+    .lbl {
+      padding: 0;
+      min-height: 0;
+      line-height: 0;
+      display: inline;
+
+      &::before,
+      &::after {
+        content: none;
+      }
+    }
+
+    input {
+      height: 100%;
+      width: 100%;
+      &:checked + .lbl {
+        &::after {
+          content: none;
+        }
+      }
+
+      &:checked + .lbl + span {
+        color: $base-txt-color;
+        border-color: $base-txt-color;
+        font-weight: 700;
+        font-size: 1.6rem;
+        box-shadow: 0.1rem 0.1rem 0.2rem 0 rgba(0, 0, 0, 0.08);
+        &:after {
+          content: '';
+          display: block;
+          width: 0.1rem;
+          height: 100%;
+          background-color: $base-txt-color;
+          left: 0;
+          top: 0;
+          position: absolute;
+        }
+      }
+    }
+
+    // .focus-visible + span {
+    //   outline: 0.1rem dashed $error-color;
+    // }
+
+    span {
+      display: block;
+      text-align: center;
+      width: 100%;
+      font-size: 1.5rem;
+      line-height: 2.4rem;
+      padding: 1.2rem 0.5rem 1rem;
+      font-weight: 500;
+      border: 0.1rem solid #bbb;
+      border-left-width: 0;
+      color: #727272;
+      position: relative;
+    }
+
+    &:first-child {
+      span {
+        border-left-width: 0.1rem;
+        border-top-left-radius: 0.6rem;
+        border-bottom-left-radius: 0.6rem;
+      }
+
+      input:checked + .lbl + span {
+        &::after {
+          content: none;
+        }
+      }
+    }
+
+    &:last-child {
+      span {
+        border-top-right-radius: 0.6rem;
+        border-bottom-right-radius: 0.6rem;
+      }
+    }
+    &.disabled {
+      input + .lbl + span {
+        color: $input-disabled-txt;
+        border-color: #ddd;
+        background-color: #f4f4f7;
+      }
+      input:checked + .lbl + span {
+        background-color: $white-color;
+        border-color: $input-txt;
+        color: $input-txt;
+      }
+    }
+  }
+}
+
+.radio-type-bar {
+  .radio {
+    display: block;
+    margin: 0;
+    position: relative;
+    .lbl {
+      position: absolute;
+      left: 1.6rem;
+      top: calc(50% - 1.2rem);
+      z-index: 11;
+    }
+    input {
+      opacity: 1;
+      width: 100%;
+      height: 100%;
+      // &:focus {
+      //   outline: 0.1rem dashed $error-color !important;
+      // }
+    }
+    span {
+      padding: 1.5rem 1.5rem 1.5rem 5.1rem;
+      @include font(1.6rem, 400, 2.4rem);
+      border: 0.1rem solid #d9d9d9;
+      display: block;
+      border-radius: 0.8rem;
+      position: relative;
+      z-index: 10;
+      background-color: $white-color;
+    }
+
+    & + .radio {
+      margin-top: 0.8rem;
+    }
+
+    input:checked + .lbl + span {
+      border: 0.1rem solid $primary-color;
+      background-color: #eff6ff;
+    }
+  }
+}
+
+.radio-type-btn {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  .radio {
+    margin: 0;
+    input {
+      opacity: 1;
+      width: 100%;
+      height: 100%;
+      // &:focus {
+      //   outline: 0.1rem dashed $error-color !important;
+      // }
+    }
+    .lbl {
+      padding: 0;
+      top: 0;
+      min-height: 0;
+      &::before,
+      &::after {
+        content: none !important;
+      }
+    }
+    span {
+      padding: 0.9rem 2rem;
+      @include font(1.4rem, 700, 2rem);
+      color: $text-body-color;
+      border: 0.1rem solid $text-body-color;
+      display: block;
+      border-radius: 2rem;
+      font-weight: 700;
+      background-color: $white-color;
+      z-index: 2;
+      position: relative;
+      @include media-max-width(400) {
+        padding: 0.9rem 1.5rem;
+      }
+    }
+    input:checked + .lbl + span {
+      border-color: #333;
+      background-color: #333;
+      color: $white-color;
+    }
+  }
+}
+
+.input-type-cols {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  .checkbox input + .lbl,
+  .radio input + .lbl {
+    align-self: flex-start;
+    top: 0;
+  }
+  .checkbox + .checkbox,
+  .checkbox + .radio,
+  .radio + .checkbox,
+  .radio + .radio {
+    margin-left: 0;
+  }
+  .checkbox span,
+  .radio span {
+    line-height: 2.4rem;
+  }
+  .link-arrow {
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 2.4rem;
+    color: $base-txt-color;
+    margin-left: 3.2rem;
+    margin-top: -0.4rem;
+  }
+}
+
+/* checkbox & radio 끝 */
+
+/* 파일 업로드 시작 */
+.file-box {
+  box-sizing: border-box;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  height: 4.8rem;
+  .file-label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    border: 0.1rem solid $input-focus-line;
+    background-color: $white-color;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    .file-txt {
+      position: relative;
+      font-size: 1.6rem;
+      font-weight: 600;
+      align-items: center;
+      display: inline-flex;
+      color: $primary-color;
+
+      &::before {
+        content: '';
+        width: 1.6rem;
+        height: 1.6rem;
+        display: block;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin-right: 0.6rem;
+        background-image: url("data:image/svg+xml,%3Csvg width='17' height='16' viewBox='0 0 17 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9.08868 3.25024L4.80968 7.64369C3.50794 8.94544 3.5079 11.0559 4.80964 12.3577C6.11139 13.6594 8.22194 13.6594 9.52369 12.3577L9.52424 12.3571L13.6958 8.19538C13.9565 7.93534 14.3786 7.93583 14.6386 8.19649C14.8987 8.45715 14.8982 8.87925 14.6375 9.1393L10.4665 13.3005C10.4664 13.3006 10.4666 13.3004 10.4665 13.3005C8.64403 15.1227 5.68918 15.1229 3.86683 13.3005C2.04547 11.4791 2.04439 8.52679 3.8636 6.70408L8.14294 2.31027C9.44468 1.00853 11.5553 1.00857 12.857 2.31032C14.1577 3.61097 14.1588 5.71908 12.8603 7.02109L8.58092 11.4149C7.79987 12.196 6.5335 12.1959 5.75245 11.4149C4.97141 10.6338 4.9714 9.36751 5.75245 8.58646L10.143 4.19593C10.4033 3.93558 10.8254 3.93558 11.0858 4.19593C11.3461 4.45628 11.3461 4.87839 11.0858 5.13874L6.69526 9.52927C6.43491 9.78962 6.43491 10.2117 6.69526 10.4721C6.95475 10.7316 7.37493 10.7324 7.63548 10.4747L11.9142 6.08151C12.6952 5.30046 12.6953 4.03417 11.9142 3.25312C11.1341 2.47304 9.86995 2.47208 9.08868 3.25024Z' fill='%230055B9'/%3E%3C/svg%3E%0A");
+      }
+    }
+  }
+
+  input {
+    position: absolute;
+    // opacity: 0;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.2rem;
+    z-index: 9;
+    // &:focus {
+    //   outline: 0.1rem dashed $error-color;
+    // }
+  }
+
+  &.highlight {
+    border-color: $black-color;
+  }
+
+  // .btn-date:focus,
+  // .file-label:focus,
+  // .file-txt:focus {
+  //   outline: 0.1rem dashed $error-color;
+  // }
+  &.dropdown-type {
+    height: 20rem;
+    .file-label {
+      border-style: dashed;
+      .file-txt {
+        &::after {
+          content: '파일을 드래그 & 드랍 해주세요';
+        }
+      }
+    }
+  }
+}
+/* 파일 업로드 끝 */
+
+/* 파일 업로드 후 섬네일 스타일 시작 */
+.imageItem {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  &.hasFiled {
+    margin-top: 1.2rem;
+  }
+  @include media-min-width(1025) {
+    font-size: 0;
+    gap: 0;
+    width: auto;
+    margin-left: -0.6rem;
+    margin-right: -0.6rem;
+  }
+  li {
+    max-width: 11.3rem;
+    box-sizing: border-box;
+    flex: 1 1 30%;
+    width: 33.333%;
+    position: relative;
+    @include media-min-width(1025) {
+      padding: 0.6rem;
+      flex: 1 1 16.6666%;
+      width: 16.6666%;
+      max-width: 16.6666%;
+    }
+
+    label {
+      width: 100%;
+      display: block;
+      padding-bottom: 100%;
+      cursor: pointer;
+      position: relative;
+      box-sizing: border-box;
+
+      input {
+        width: 100%;
+        height: 100%;
+        // opacity: 0;
+        position: absolute;
+
+        // &:focus {
+        // outline: 0.1rem dashed $error-color;
+        // }
+
+        & + .lbl {
+          position: absolute;
+          box-sizing: border-box;
+          left: 0;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 5;
+          background-color: $white-color;
+        }
+
+        // &:checked + .lbl {
+        //   & + .btn-del {
+        //     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Ccircle cx='12' cy='12' r='11' fill='white'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM8.29289 8.29289C8.68342 7.90237 9.31658 7.90237 9.70711 8.29289L12 10.5858L14.2929 8.29289C14.6834 7.90237 15.3166 7.90237 15.7071 8.29289C16.0976 8.68342 16.0976 9.31658 15.7071 9.70711L13.4142 12L15.7071 14.2929C16.0976 14.6834 16.0976 15.3166 15.7071 15.7071C15.3166 16.0976 14.6834 16.0976 14.2929 15.7071L12 13.4142L9.70711 15.7071C9.31658 16.0976 8.68342 16.0976 8.29289 15.7071C7.90237 15.3166 7.90237 14.6834 8.29289 14.2929L10.5858 12L8.29289 9.70711C7.90237 9.31658 7.90237 8.68342 8.29289 8.29289Z' fill='%232C57F3'/%3E%3C/svg%3E");
+        //     & + img {
+        //       border-color: $input-focus-line;
+        //     }
+        //   }
+        //   // 섬네일 pdf
+        //   &.thumb_pdf {
+        //     border-color: $input-focus-line;
+        //   }
+        // }
+      }
+
+      .btn-del {
+        position: absolute;
+        z-index: 10;
+        right: 0.9rem;
+        top: 0.8rem;
+        width: 2.4rem;
+        height: 2.4rem;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='12' cy='12' r='11' fill='white'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM8.29289 8.29289C8.68342 7.90237 9.31658 7.90237 9.70711 8.29289L12 10.5858L14.2929 8.29289C14.6834 7.90237 15.3166 7.90237 15.7071 8.29289C16.0976 8.68342 16.0976 9.31658 15.7071 9.70711L13.4142 12L15.7071 14.2929C16.0976 14.6834 16.0976 15.3166 15.7071 15.7071C15.3166 16.0976 14.6834 16.0976 14.2929 15.7071L12 13.4142L9.70711 15.7071C9.31658 16.0976 8.68342 16.0976 8.29289 15.7071C7.90237 15.3166 7.90237 14.6834 8.29289 14.2929L10.5858 12L8.29289 9.70711C7.90237 9.31658 7.90237 8.68342 8.29289 8.29289Z' fill='%23444444'/%3E%3C/svg%3E%0A");
+      }
+      // 섬네일 pdf
+      &.thumb_pdf {
+        span {
+          font-size: 0;
+          position: absolute;
+          left: 0;
+          top: 0;
+        }
+        .lbl {
+          background-size: 3.8rem;
+          background-position: center;
+          background-repeat: no-repeat;
+          border: 0.1rem solid #eee;
+          background-color: #f6f8fa;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='38' height='38' viewBox='0 0 38 38' fill='none'%3E%3Cg clip-path='url(%23clip0_6604_29810)'%3E%3Cpath d='M31.9433 21.6914V2.73892C31.9433 1.22684 30.7162 -0.000244141 29.2042 -0.000244141H13.3708C12.6425 -0.000244141 11.9458 0.284756 11.4392 0.799339L3.79958 8.43892C3.285 8.95351 3 9.65017 3 10.3706V34.4689C3 35.981 4.22708 37.2081 5.73917 37.2081H29.2042C30.7162 37.2081 31.9433 35.981 31.9433 34.4689V32.6164' fill='%23DDE3EE'/%3E%3Cpath d='M12.9904 7.32264V0.0393066C12.4046 0.12639 11.8583 0.379723 11.4388 0.799307L3.79917 8.43889C3.37958 8.85847 3.11833 9.41264 3.03125 9.99847H10.3146C11.795 9.99847 12.9904 8.80306 12.9904 7.32264ZM33.8383 21.6914H12.0358C11.2758 21.6914 10.6663 22.3089 10.6663 23.061V31.2389C10.6663 31.9989 11.2837 32.6085 12.0358 32.6085H33.8304C34.5904 32.6085 35.2 31.991 35.2 31.2389V23.061C35.2079 22.3089 34.5904 21.6914 33.8383 21.6914Z' fill='%2394A9C7'/%3E%3Cpath d='M17.8717 27.518H16.7159V29.2834C16.7159 29.5367 16.6526 29.7267 16.5338 29.8534C16.4151 29.9801 16.2646 30.0513 16.0826 30.0513C15.8926 30.0513 15.7421 29.988 15.6234 29.8613C15.5046 29.7346 15.4492 29.5446 15.4492 29.2913V24.4938C15.4492 24.2167 15.5126 24.0188 15.6392 23.9001C15.7659 23.7813 15.9717 23.718 16.2488 23.718H17.8638C18.3388 23.718 18.7109 23.7576 18.9721 23.8288C19.2255 23.9001 19.4471 24.0188 19.6292 24.1851C19.8113 24.3513 19.9538 24.5492 20.0488 24.7867C20.1438 25.0242 20.1913 25.2934 20.1913 25.5863C20.1913 26.2196 19.9934 26.7026 19.6055 27.0271C19.2255 27.3517 18.6476 27.518 17.8717 27.518ZM17.563 24.6601H16.7159V26.5601H17.563C17.8638 26.5601 18.1092 26.5284 18.3071 26.4651C18.5051 26.4017 18.6555 26.2988 18.7663 26.1563C18.8771 26.0138 18.9246 25.8317 18.9246 25.6021C18.9246 25.3251 18.8455 25.1034 18.6792 24.9292C18.5051 24.7551 18.133 24.6601 17.563 24.6601ZM22.0359 23.7101H23.6826C24.1101 23.7101 24.4742 23.7496 24.783 23.8288C25.0917 23.908 25.3688 24.0584 25.6142 24.2721C26.2634 24.8263 26.588 25.6734 26.588 26.8055C26.588 27.1776 26.5563 27.518 26.493 27.8267C26.4296 28.1355 26.3267 28.4126 26.1921 28.658C26.0576 28.9034 25.8834 29.1251 25.6696 29.323C25.5034 29.4734 25.3213 29.5921 25.1234 29.6871C24.9255 29.7742 24.7117 29.8376 24.4821 29.8771C24.2526 29.9167 23.9992 29.9326 23.7142 29.9326H22.0676C21.838 29.9326 21.6638 29.9009 21.553 29.8296C21.4342 29.7584 21.363 29.6634 21.3234 29.5367C21.2917 29.4101 21.268 29.2438 21.268 29.0459V24.478C21.268 24.2088 21.3313 24.0109 21.4501 23.8842C21.5688 23.7734 21.7667 23.7101 22.0359 23.7101ZM22.5267 24.7155V28.943H23.4846C23.6905 28.943 23.8567 28.9351 23.9755 28.9271C24.0942 28.9192 24.2209 28.8876 24.3476 28.8401C24.4742 28.7926 24.5851 28.7292 24.6801 28.6501C25.0996 28.2938 25.3134 27.6763 25.3134 26.8055C25.3134 26.188 25.2184 25.7288 25.0363 25.428C24.8542 25.1271 24.6246 24.9292 24.3476 24.8421C24.0784 24.7551 23.7459 24.7155 23.3659 24.7155H22.5267ZM31.4171 24.6838H28.9313V26.2751H31.0055C31.1955 26.2751 31.338 26.3146 31.433 26.4017C31.528 26.4888 31.5755 26.5996 31.5755 26.7501C31.5755 26.9005 31.528 27.0113 31.433 27.0905C31.338 27.1776 31.1955 27.2171 31.0055 27.2171H28.9313V29.2676C28.9313 29.5288 28.8759 29.7188 28.7571 29.8455C28.6384 29.9721 28.488 30.0355 28.3059 30.0355C28.1159 30.0355 27.9655 29.9721 27.8467 29.8455C27.728 29.7188 27.6726 29.5288 27.6726 29.2676V24.478C27.6726 24.2959 27.6963 24.1455 27.7517 24.0346C27.8071 23.9238 27.8863 23.8367 28.0051 23.7813C28.1159 23.7259 28.2663 23.7021 28.4484 23.7021H31.4251C31.623 23.7021 31.7734 23.7496 31.8763 23.8367C31.9792 23.9238 32.0267 24.0426 32.0267 24.1851C32.0267 24.3355 31.9792 24.4542 31.8763 24.5413C31.7655 24.6442 31.623 24.6838 31.4171 24.6838Z' fill='white'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M21.718 8.67584C21.814 8.46884 21.909 8.24784 21.999 8.01884C22.096 7.77084 22.181 7.52884 22.249 7.29784C22.384 6.83584 22.4481 6.43584 22.419 6.09884C22.315 4.91484 21.659 4.15784 20.749 4.23684C19.84 4.31684 19.324 5.17684 19.427 6.36084C19.454 6.67084 19.569 7.01784 19.752 7.40684C19.852 7.61684 19.9691 7.83384 20.1021 8.05684C20.2996 8.38894 20.5135 8.711 20.743 9.02184C20.7942 9.08935 20.8617 9.14275 20.9391 9.17704C21.0166 9.21133 21.1014 9.22538 21.1858 9.21789C21.2702 9.21039 21.3512 9.18159 21.4214 9.13418C21.4916 9.08677 21.5486 9.02231 21.5871 8.94684C21.6151 8.89384 21.66 8.80084 21.718 8.67584ZM20.657 6.97984C20.519 6.68784 20.438 6.44284 20.423 6.27284C20.363 5.58384 20.5591 5.25784 20.8371 5.23284C21.1141 5.20884 21.3621 5.49584 21.4221 6.18584C21.4391 6.37384 21.392 6.66384 21.289 7.01584C21.23 7.21684 21.057 7.70984 21.057 7.70984C21.057 7.70984 20.741 7.15784 20.657 6.97984Z' fill='%23F44336'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M18.7945 13.0223C18.5713 13.0627 18.3357 13.1116 18.0965 13.1692C17.8372 13.2312 17.5908 13.3012 17.3625 13.378C16.9066 13.5324 16.5417 13.7086 16.2829 13.9265C15.3726 14.6908 15.1288 15.6623 15.7149 16.3616C16.3024 17.0612 17.3028 16.9906 18.2136 16.2271C18.4515 16.0263 18.6704 15.7339 18.8835 15.3601C18.9987 15.1585 19.1093 14.9382 19.2157 14.7014C19.3745 14.3491 19.5156 13.9891 19.6386 13.6228C19.6647 13.5421 19.6699 13.456 19.6536 13.3727C19.6374 13.2895 19.6002 13.2117 19.5455 13.1468C19.4909 13.0818 19.4206 13.0319 19.3414 13.0016C19.2621 12.9713 19.1765 12.9617 19.0924 12.9736C19.0335 12.9819 18.9316 12.9984 18.7959 13.0226L18.7945 13.0223ZM18.0152 14.8645C17.8551 15.145 17.7003 15.3511 17.5697 15.4609C17.0397 15.9052 16.6608 15.9325 16.4809 15.7191C16.3023 15.5059 16.3952 15.1382 16.926 14.6932C17.0702 14.5715 17.3347 14.4436 17.6822 14.3261C17.8801 14.2583 18.3831 14.1173 18.3831 14.1173C18.3831 14.1173 18.1128 14.6936 18.0152 14.8645Z' fill='%23F44336'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M23.7299 12.7456C23.879 12.9171 24.0432 13.0942 24.2153 13.2682C24.4029 13.459 24.5885 13.6347 24.7732 13.7903C25.1403 14.1015 25.4793 14.3236 25.7994 14.4332C26.9229 14.8207 27.8808 14.528 28.1783 13.6655C28.475 12.8025 27.8996 11.9804 26.7766 11.5943C26.4824 11.4928 26.119 11.4558 25.6879 11.4653C25.4563 11.4717 25.2105 11.4903 24.9517 11.5207C24.5685 11.5659 24.1877 11.6302 23.8108 11.7132C23.7281 11.7323 23.6516 11.7721 23.5886 11.8289C23.5255 11.8856 23.478 11.9575 23.4503 12.0377C23.4227 12.1179 23.416 12.2039 23.4307 12.2874C23.4455 12.371 23.4813 12.4494 23.5347 12.5153C23.573 12.5619 23.6393 12.6418 23.7303 12.7447L23.7299 12.7456ZM25.7112 12.4652C26.0328 12.4584 26.2895 12.4841 26.4509 12.5395C27.1057 12.7654 27.3238 13.077 27.2326 13.3407C27.1423 13.6026 26.7802 13.7129 26.125 13.488C25.9468 13.4261 25.7005 13.2661 25.4199 13.0285C25.2612 12.8932 24.8812 12.5346 24.8812 12.5346C24.8812 12.5346 25.5135 12.4692 25.7112 12.4652Z' fill='%23F44336'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M20.6555 8.61383C20.8115 8.91914 20.9779 9.21898 21.1545 9.51283C21.5545 10.1768 22.0165 10.8428 22.5355 11.4648C22.8955 11.8948 23.2695 12.2908 23.6585 12.6438L24.0295 12.9788L24.7005 12.2378L24.3305 11.9018C23.9765 11.5818 23.6345 11.2208 23.3035 10.8248C22.6272 10.0073 22.0412 9.11915 21.5555 8.17583L21.3355 7.72583L20.4375 8.16383L20.6555 8.61383Z' fill='%23F44336'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M20.8392 8.1577C20.7212 8.47347 20.6012 8.78848 20.4792 9.1027C20.1587 9.93618 19.8294 10.7662 19.4912 11.5927C19.2461 12.1965 18.9851 12.7938 18.7082 13.3837L18.4922 13.8337L19.3932 14.2677L19.6102 13.8177C19.8302 13.3577 20.1022 12.7327 20.4152 11.9737L20.5852 11.5577C20.995 10.5462 21.3917 9.52945 21.7752 8.5077L21.9512 8.0407L21.0142 7.6897L20.8392 8.1577Z' fill='%23F44336'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M24.0982 11.7328C23.5705 11.8361 23.0448 11.9487 22.5212 12.0708C21.3378 12.3443 20.1668 12.6682 19.0112 13.0418L18.5352 13.1978L18.8462 14.1478L19.3212 13.9928C20.4232 13.6328 21.5912 13.3148 22.7492 13.0448C23.2575 12.9261 23.7679 12.8164 24.2802 12.7158L24.7722 12.6248L24.5892 11.6418L24.0982 11.7328Z' fill='%23F44336'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_6604_29810'%3E%3Crect width='38' height='38' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+          @include media-min-width(1025) {
+            background-size: 10rem;
+          }
+        }
+        // input:checked + .lbl {
+        //   border-color: $input-focus-line;
+        // }
+      }
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      object-fit: cover;
+      z-index: 7;
+      border: 0.1rem solid #b4bdcd;
+      // border: 0.2rem solid $input-focus-line;
+    }
+  }
+}
+//팝업 열린 상테에서 파일업로드 추가(섭네일 레이아웃이 달라지는 현상 방지})
+.lock {
+  .imageItem {
+    width: calc(100% - 1.2rem);
+  }
+}
+.textItem {
+  padding-top: 2.4rem;
+  li + li {
+    margin-top: 0.8rem;
+  }
+  .inline-flex {
+    .file-name {
+      font-size: 1.6rem;
+      line-height: 2.4rem;
+      font-weight: 400;
+      color: $text-sub-color;
+      margin-right: 1rem;
+      @include ellipsis(1);
+    }
+    .btn-del {
+      flex: 0 0 auto;
+    }
+  }
+}
+/* 파일 업로드 후 섬네일 스타일 */
+
+/* 서명패드 시작 */
+.signiture-box {
+  margin-top: 2.4rem;
+
+  > .flex {
+    margin-bottom: 1.2rem;
+  }
+
+  .tit {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: $black-color;
+    @include media-min-width(1025) {
+      @include font(1.8rem, 600, 2.8rem);
+    }
+  }
+  .btn-del {
+    position: absolute;
+    right: 1rem;
+    top: 0.8rem;
+  }
+}
+.canvas-wrap {
+  border-radius: 0.8rem;
+  // height: 25rem;
+  border: 0.1rem solid $box-line;
+  position: relative;
+  background-color: #f9f9fb;
+
+  .info-txt {
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #b4bdcd;
+    line-height: 2.8rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+}
+/* 서명패드 끝 */
+
+/* textarea 시작 */
+.textarea {
+  position: relative;
+
+  textarea {
+    @include font(1.6rem, 400, 2.7rem);
+    padding: 1rem 1.6rem;
+    border: 0.1rem solid $input-line;
+    border-radius: 0.8rem;
+    color: $input-txt;
+    background-color: $white-color;
+    resize: none;
+    &::placeholder {
+      color: $placeholder;
+    }
+  }
+
+  .size {
+    display: inline-flex;
+    @include font(1.4rem, 400, 2rem);
+    position: absolute;
+    bottom: 1rem;
+    right: 1.6rem;
+    color: #727272;
+    .point {
+      color: $base-txt-color;
+    }
+  }
+}
+.tabFocus {
+  .textarea {
+    textarea {
+      &:focus {
+        outline: 0.2rem dashed $primary-color;
+        outline-offset: 0.1rem;
+      }
+    }
+  }
+}
+/* textarea 끝 */
+
+/* 필수 입력 요소 스타일 시작 */
+.msg-required {
+  @include font(1.6rem, 400, 2.4rem);
+  color: $black-color;
+  text-align: right;
+  .desc-title + &,
+  .tit-form + & {
+    margin-top: 2.4rem;
+  }
+  & + .form-wrap {
+    margin-top: 0.8rem;
+  }
+  .sub-title + & {
+    padding-top: 2.4rem;
+  }
+}
+.req {
+  color: $error-color;
+  margin-left: 0.2rem;
+}
+/* 필수 입력 요소 스타일 끝 */
+
+/* 폼 입력 그룹 스타일 시작 */
+.form-wrap {
+  border-radius: 0;
+  .form-row {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    @include media-min-width(1025) {
+      gap: 1.2rem;
+    }
+    .required {
+      display: flex;
+      align-items: center;
+      .lbl-tit {
+        &:after {
+          content: '*';
+          color: $error-color;
+          font-size: 1.3rem;
+          font-weight: 400;
+          display: inline-block;
+          margin-left: 0.2rem;
+        }
+      }
+    }
+    .required-msg {
+      flex: 0 0 auto;
+      margin-left: auto;
+      color: $text-sub-color;
+      font-size: 1.5rem;
+      line-height: 2.2rem;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      &::before {
+        content: '';
+        width: 2rem;
+        flex: 0 0 auto;
+        height: 2rem;
+        margin-right: 0.6rem;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.0003 3.33317C6.31843 3.33317 3.33366 6.31794 3.33366 9.99984C3.33366 13.6817 6.31843 16.6665 10.0003 16.6665C13.6822 16.6665 16.667 13.6817 16.667 9.99984C16.667 6.31794 13.6822 3.33317 10.0003 3.33317ZM1.66699 9.99984C1.66699 5.39746 5.39795 1.6665 10.0003 1.6665C14.6027 1.6665 18.3337 5.39746 18.3337 9.99984C18.3337 14.6022 14.6027 18.3332 10.0003 18.3332C5.39795 18.3332 1.66699 14.6022 1.66699 9.99984ZM10.0003 5.83317C10.4606 5.83317 10.8337 6.20627 10.8337 6.6665V9.99984C10.8337 10.4601 10.4606 10.8332 10.0003 10.8332C9.54009 10.8332 9.16699 10.4601 9.16699 9.99984V6.6665C9.16699 6.20627 9.54009 5.83317 10.0003 5.83317ZM9.16699 13.3332C9.16699 12.8729 9.54009 12.4998 10.0003 12.4998H10.0087C10.4689 12.4998 10.842 12.8729 10.842 13.3332C10.842 13.7934 10.4689 14.1665 10.0087 14.1665H10.0003C9.54009 14.1665 9.16699 13.7934 9.16699 13.3332Z' fill='%23999999'/%3E%3C/svg%3E");
+      }
+    }
+    .lbl-only {
+      position: relative;
+      font-weight: 500;
+      color: $base-txt-color;
+      font-size: 1.5rem;
+      transform: none;
+      @include media-min-width(1025) {
+        font-size: 1.8rem;
+        font-weight: 600;
+        line-height: 2.8rem;
+      }
+      .btn-tooltip {
+        vertical-align: middle;
+        display: inline-block;
+        margin-left: 0.4rem;
+        margin-top: -0.2rem;
+      }
+    }
+    & + .form-row {
+      margin-top: 2.4rem;
+      @include media-min-width(1025) {
+        margin-top: 3.2rem;
+      }
+      &.msg-inline {
+        margin-top: 0.8rem;
+      }
+    }
+    &.phone-row {
+      position: relative;
+      label {
+        position: absolute;
+      }
+    }
+    &.type-top-line {
+      border-top: 0.1rem solid #ddd;
+      padding-top: 2.4rem;
+    }
+  }
+  & + .bottom-fixed {
+    padding-top: 3.2rem;
+  }
+}
+/* 폼 입력 그룹 스타일 끝 */

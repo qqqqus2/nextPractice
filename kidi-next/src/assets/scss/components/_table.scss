@@ -1,0 +1,182 @@
+/*** 공통 테이블 스타일 시작 ***/
+.table {
+  table-layout: fixed;
+  width: 100%;
+  .table {
+    th,
+    td {
+      border: 0;
+    }
+  }
+  th,
+  td {
+    @include font(1.6rem, 500, 2.4rem);
+    border-top: 0.1rem solid #eee;
+    padding: 1.4rem 0;
+    text-align: left;
+    border-collapse: collapse;
+    word-break: break-word;
+    &.br-include {
+      br {
+        display: block;
+      }
+    }
+    @include media-min-width(1025) {
+      padding-top: 1.6rem;
+      padding-bottom: 1.6rem;
+      &.br-include {
+        br {
+          display: none;
+        }
+      }
+    }
+  }
+
+  th {
+    @include font(1.5rem, 500, 2.2rem);
+    color: #727272;
+    width: 12rem;
+    text-align: left;
+    @include media-min-width(1025) {
+      width: 24.5rem;
+      &.w-90,
+      &.w-130,
+      &.w-140,
+      &.w-170 {
+        width: 24.5rem !important;
+      }
+    }
+    & + td {
+      text-align: right;
+      @include media-min-width(1025) {
+        text-align: left;
+        .bottom .pop-body & {
+          text-align: right;
+        }
+      }
+    }
+  }
+  td {
+    @include media-min-width(1025) {
+      font-size: 1.8rem;
+      line-height: 2.6rem;
+      font-weight: 500;
+    }
+    .input-group {
+      justify-content: flex-end;
+    }
+  }
+  &.type-2 {
+    td,
+    th {
+      border-top: 0.1rem solid $black-color;
+      // border-top: 0.1rem solid $box-line;
+      font-size: 1.4rem;
+    }
+    td {
+      text-align: left;
+    }
+  }
+  &.no-line {
+    th,
+    td {
+      border: 0;
+      padding: 0.6rem 0;
+    }
+    tr:first-child {
+      th,
+      td {
+        padding-top: 0;
+      }
+    }
+
+    tr:last-child {
+      th,
+      td {
+        padding-bottom: 0;
+      }
+    }
+  }
+  tr.sub-list {
+    & > td {
+      padding: 0;
+      border-top: 0;
+    }
+    & + tr {
+      & > td,
+      th {
+        border-top: 0;
+      }
+    }
+    .list-inner {
+      margin: 0;
+      padding: 0;
+      background-color: transparent;
+      padding-left: 8rem;
+      & > li {
+        padding-left: 0.9rem;
+        text-indent: -0.9rem;
+        display: block;
+        text-align: right;
+        @include media-min-width(1025) {
+          text-align: left;
+        }
+        &:before {
+          content: '';
+          display: inline-block;
+          width: 0.3rem;
+          height: 0.3rem;
+          margin-right: 0.6rem;
+          vertical-align: middle;
+          background-color: $base-txt-color;
+        }
+      }
+      & > li + li {
+        margin-top: 0rem;
+      }
+      em {
+        color: #222;
+        flex: 0;
+        flex: none;
+        margin-right: 0.4rem;
+        @include font(1.5rem, 400, 2.2rem);
+        &:before {
+          content: '[';
+        }
+        &:after {
+          content: ']';
+        }
+      }
+      span {
+        color: #222;
+        @include font(1.5rem, 400, 2.2rem);
+      }
+      @include media-min-width(1025) {
+        padding-left: 24.5rem;
+        & > li {
+          justify-content: start;
+          em,
+          span {
+            @include font(1.6rem, 500, 2.4rem);
+          }
+        }
+      }
+    }
+  }
+}
+
+.cols-3 {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  .checkbox {
+    margin-left: 0;
+  }
+}
+
+.msg-result + .desc-list + .table-wrap {
+  margin-top: 7.2rem;
+  @include media-min-width(1025) {
+    margin-top: 9.2rem;
+  }
+}
+/*** 공통 테이블 스타일 끝 ***/

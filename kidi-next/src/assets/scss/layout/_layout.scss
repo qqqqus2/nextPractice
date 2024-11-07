@@ -1,0 +1,182 @@
+/*** 공통 레이아웃 스타일 시작 ***/
+:root {
+  overscroll-behavior: none; // ios
+}
+html {
+  ::-webkit-scrollbar {
+    width: 0.8rem;
+    height: 0.8rem;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 0.625rem;
+    box-shadow: 0 0 0 0.063rem rgba(255, 255, 255, 0.3);
+  }
+
+  *:hover::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.6);
+  }
+}
+body {
+  font:
+    normal 1.6rem/1.44 'Pretendard',
+    sans-serif;
+  color: $base-txt-color;
+  letter-spacing: -0.02em;
+  font-weight: 300;
+  word-break: keep-all;
+  -webkit-font-smoothing: antialiased;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: none;
+
+  //background-color: $background-color;
+  // &.bg-wht {
+  //   background-color: $white-color;
+  // }
+  &.hidden {
+    left: 0;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    overflow: hidden;
+    position: fixed;
+  }
+}
+
+#container {
+  padding-bottom: 4rem;
+  position: relative;
+  box-sizing: border-box;
+  padding-top: 7.2rem;
+  @include media-min-width(1025) {
+    padding-top: 0;
+    padding-bottom: 10rem;
+    &.pb-0 {
+      padding-bottom: 10rem !important;
+    }
+  }
+
+  &.headerFixed {
+    padding-top: 7.2rem;
+    @include media-min-width(1025) {
+      padding-top: 15rem;
+    }
+  }
+}
+
+.inner {
+  box-sizing: border-box;
+  padding: 0rem 2.4rem;
+  margin: auto;
+  max-width: 120rem;
+  > .inner {
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+  }
+  @include media-min-width(1025) {
+    padding: 0 4rem;
+  }
+}
+.pcSize {
+  padding-bottom: 32.2rem;
+  position: relative;
+  min-height: 100vh;
+  #footer.web-footer {
+    position: absolute;
+    width: 100%;
+  }
+  .inner {
+    max-width: 128rem;
+    padding: 0 4rem;
+    margin: auto;
+  }
+}
+
+// lock
+body.lock {
+  height: 100vh;
+  overflow: hidden;
+  // -webkit-overflow-scrolling: none;
+}
+// .lock #wrap {
+//   position: absolute;
+//   left: 0;
+//   top: 0;
+//   bottom: 0;
+//   width: 100%;
+//   -webkit-overflow-scrolling: none;
+// }
+
+/* 스크롤 탑 버튼 스타일 시작 */
+.scrollTopBtn {
+  position: fixed;
+  z-index: 100;
+  right: 1rem;
+  bottom: 10rem;
+  width: 6rem;
+  height: 6rem;
+  line-height: 2rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: $white-color;
+  border: 0.1rem solid $box-line;
+  border-radius: 50%;
+  text-align: center;
+  text-decoration: none;
+  color: $black-color;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  box-shadow: 0.4rem 0.4rem 0.8rem 0 rgba(0, 0, 0, 0.12);
+  opacity: 0.5;
+  transform: scale(0);
+  transform-origin: center;
+  @include media-max-width(431) {
+    width: 4rem;
+    height: 4rem;
+    font-size: 0;
+  }
+  &.holdScroll {
+    opacity: 1;
+    transform: scale(1);
+    transition:
+      0.3s ease opacity,
+      0.3s ease transform;
+  }
+  &::before {
+    content: '';
+    display: block;
+    width: 2.4rem;
+    height: 2.4rem;
+    flex: 0 0 auto;
+    background-size: 2.4rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M19.7071 15.7071C19.3166 16.0976 18.6834 16.0976 18.2929 15.7071L12 9.41421L5.70711 15.7071C5.31658 16.0976 4.68342 16.0976 4.29289 15.7071C3.90237 15.3166 3.90237 14.6834 4.29289 14.2929L11.2929 7.29289C11.6834 6.90237 12.3166 6.90237 12.7071 7.29289L19.7071 14.2929C20.0976 14.6834 20.0976 15.3166 19.7071 15.7071Z' fill='%231A1B1D'/%3E%3C/svg%3E");
+    @include media-max-width(431) {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+.lock {
+  .scrollTopBtn {
+    visibility: hidden;
+  }
+}
+// 스크롤 탑 버튼 스타일 끝 */
+/*** 공통 레이아웃 스타일 끝 ***/
