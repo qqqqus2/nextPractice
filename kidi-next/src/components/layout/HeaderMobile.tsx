@@ -59,14 +59,14 @@ export default function Header() {
 
                 <div className="right">
                     <div className="checkbox toggle-type-1 sizeModeType">
-                        <input
-                            type="checkbox"
-                            id="sizeMode"
-                            className="lg-sizeToggle"
-                            onChange={toggleLgSize}
-                            checked={isLargeSize}
-                        />
                         <label htmlFor="sizeMode">
+                            <input
+                                type="checkbox"
+                                id="sizeMode"
+                                className="lg-sizeToggle"
+                                onChange={toggleLgSize}
+                                checked={isLargeSize}
+                            />
                             <i aria-hidden="true" className="lbl" />
                             <span className="status-info">큰 글자보기</span>
                         </label>

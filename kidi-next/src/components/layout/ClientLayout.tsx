@@ -2,6 +2,7 @@
 
 import { DeviceProvider } from "@/context";
 import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 
 export default function ClientLayout({
     children,
@@ -11,7 +12,10 @@ export default function ClientLayout({
     return (
         <DeviceProvider>
             <Header />
-            <main>{children}</main>
+            <section className="kidi-wrap">
+                <div id="container">{children}</div>
+            </section>
+            <Footer />
         </DeviceProvider>
     );
 }

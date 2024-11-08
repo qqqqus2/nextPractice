@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Home() {
     return (
-        <main className="inner">
+        <div className="inner">
             <div className="main-top">
                 <MainSwiper />
                 <div className="main-claim-list">
@@ -274,6 +274,6 @@ export default function Home() {
                     </Link>
                 </div>
             </div>
-        </main>
+        </div>
     );
 }
