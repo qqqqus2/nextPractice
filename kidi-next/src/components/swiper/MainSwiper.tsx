@@ -52,12 +52,18 @@ export default function MainSwiper() {
                 {slideData.map((slide) => (
                     <SwiperSlide key={slide.id}>
                         <div className="swiper-slide">
-                            <Link href="#">
+                            <Link
+                                href="javascript:void(0)"
+                                style={{
+                                    position: "relative",
+                                    display: "block",
+                                    height: "100%",
+                                }}
+                            >
                                 <Image
                                     src={slide.image}
                                     alt={slide.title}
-                                    width={740}
-                                    height={424}
+                                    fill
                                     priority={slide.id === 1}
                                 />
                             </Link>

@@ -1,0 +1,557 @@
+/*** 실손청구페이지 시작 ***/
+
+/* 실손청구 상세 조회 시작 */
+.detail-range {
+    margin-top: 0.8rem;
+    @include font(1.8rem, 500, 2.6rem);
+    align-items: center;
+    gap: 0 0.8rem;
+    display: flex;
+}
+/* 실손청구 상세 조회 끝 */
+
+/* 지도 검색 시작 */
+.search-info {
+    margin-top: 2.4rem;
+    .search-tit {
+        @include font(1.5rem, 500, 2.4rem);
+        color: $title-txt-color;
+        strong {
+            display: flex;
+            font-weight: 700;
+            color: #043cab;
+            margin-bottom: 0.8rem;
+        }
+    }
+    .search-condition {
+        margin: 2.4rem -2rem 0;
+        border-top: 0.1rem solid $primary-blue2;
+        border-bottom: 0.1rem solid $primary-blue2;
+        background-color: #f8fbff;
+        padding: 2.4rem;
+        dl {
+            font-size: 1.4rem;
+            & + dl {
+                margin-top: 1.6rem;
+            }
+            dt {
+                display: flex;
+                font-weight: 400;
+            }
+            dd {
+                margin-top: 0.4rem;
+                font-weight: 400;
+                color: #043cab;
+            }
+        }
+    }
+}
+/* 지도 검색 끝 */
+
+/* 보험사 아이템 시작 */
+.insurance-list {
+    margin-top: 2.4rem;
+    .insurance-item {
+        display: flex;
+        // padding: 1.5rem 2rem;
+        @include media-min-width(1025) {
+            padding: 0;
+        }
+        border-radius: 1.2rem;
+        .bank-info {
+            display: flex;
+            width: 100%;
+            flex-wrap: wrap;
+            flex-direction: column;
+            .flex {
+                align-items: center;
+            }
+            .name {
+                font-size: 1.8rem;
+                font-weight: 700;
+                line-height: 2rem;
+                width: 100%;
+                flex: 1 1 auto;
+                @include media-min-width(1025) {
+                    line-height: 2.8rem;
+                }
+                color: $black-color;
+            }
+            .link-arrow {
+                color: #444;
+                font-size: 1.4rem;
+                font-weight: 600;
+                line-height: 2rem;
+                width: auto !important;
+                margin-left: 0;
+                flex: 0 0 auto;
+                &::after {
+                    width: 1.6rem;
+                    height: 1.6rem;
+                    margin-left: 0;
+                }
+            }
+        }
+        .app-link {
+            margin-top: 1.7rem;
+            .badge-link {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                @include font(1.6rem, 500, 2.4rem);
+                border: 0.1rem solid #d9dbe3;
+                border-radius: 0.6rem;
+                height: 4rem;
+                max-width: 100%;
+                color: $text-sub-color;
+                background-color: $white-color;
+                &:after {
+                    content: "";
+                    display: inline-block;
+                    width: 1.2rem;
+                    height: 1.2rem;
+                    margin-left: 0.8rem;
+                    background-image: url("data:image/svg+xml,%3Csvg width='13' height='12' viewBox='0 0 13 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M1.83333 9.33333C1.83333 10.0697 2.43029 10.6667 3.16667 10.6667L9.83333 10.6667C10.5697 10.6667 11.1667 10.0697 11.1667 9.33333L11.1667 8.66667C11.1667 8.29848 11.4651 8 11.8333 8C12.2015 8 12.5 8.29848 12.5 8.66667L12.5 9.33333C12.5 10.8061 11.3061 12 9.83333 12L3.16667 12C1.69391 12 0.5 10.8061 0.5 9.33333L0.5 8.66667C0.5 8.29848 0.798477 8 1.16667 8C1.53486 8 1.83333 8.29848 1.83333 8.66667L1.83333 9.33333ZM3.36193 5.5286C3.62228 5.26825 4.04439 5.26825 4.30474 5.5286L5.83333 7.05719L5.83333 0.666667C5.83333 0.298478 6.13181 4.69082e-07 6.5 4.52987e-07C6.86819 4.36893e-07 7.16667 0.298478 7.16667 0.666667L7.16667 7.05719L8.69526 5.5286C8.95561 5.26825 9.37772 5.26825 9.63807 5.5286C9.89842 5.78894 9.89842 6.21106 9.63807 6.4714L6.9714 9.13807C6.71105 9.39842 6.28894 9.39842 6.0286 9.13807L3.36193 6.4714C3.10158 6.21106 3.10158 5.78895 3.36193 5.5286Z' fill='%23727272'/%3E%3C/svg%3E%0A");
+                }
+            }
+        }
+        & + .insurance-item {
+            margin-top: 2.4rem;
+            padding-top: 2.4rem;
+            border-top: 0.1rem solid #eee;
+        }
+    }
+    & + .btn.w-full {
+        margin-top: 4rem;
+    }
+}
+.insurance-name {
+    display: flex;
+    align-items: center;
+    // padding: 0.9rem 2rem;
+    margin-bottom: 2.4rem;
+    strong {
+        font-size: 1.8rem;
+        font-weight: 700;
+        line-height: 2rem;
+    }
+}
+/* 보험사 아이템 끝 */
+
+/* 지급계좌 선택 팝업 시작 */
+#bankListPop {
+    .pop-wrap {
+        @include media-min-width(1025) {
+            max-width: 80rem;
+        }
+    }
+}
+.bankList-wrap {
+    padding-top: 1.8rem;
+    ul {
+        font-size: 0;
+        margin: 0 -0.6rem;
+        display: flex;
+        flex-wrap: wrap;
+        li {
+            width: 33.333%;
+            padding: 0.4rem;
+            vertical-align: top;
+            @include media-min-width(760) {
+                width: 20%;
+                padding: 0.6rem;
+            }
+        }
+        .bank-item {
+            position: relative;
+            cursor: pointer;
+            input {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+                z-index: 3;
+                appearance: none;
+                &:checked + .item-wrap {
+                    border: 0.1rem solid $input-focus-line;
+                    background-color: #eff6ff;
+                }
+            }
+            .item-wrap {
+                border-radius: 1.2rem;
+                background-color: #f9f9fb;
+                padding: 1rem;
+                display: block;
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                position: relative;
+                .ico-bank {
+                    margin-right: 0;
+                    margin: auto;
+                }
+                .bank-name {
+                    font-size: 1.4rem;
+                    font-weight: 500;
+                    line-height: 2rem;
+                    color: $base-txt-color;
+                    display: block;
+                    margin-top: 0.6rem;
+                    word-break: break-word;
+                }
+            }
+            input:focus + .item-wrap {
+                &::before {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    border-radius: 0.3rem;
+                    // outline: 0.1rem dashed $error-color;
+                }
+            }
+        }
+    }
+}
+
+/* 지급계좌 선택 팝업 끝 */
+
+.input-group.type-send-msg {
+    width: auto;
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    text-wrap: nowrap;
+    > span {
+        text-align: right;
+    }
+    .time {
+        align-self: center;
+        text-wrap: nowrap;
+        flex: 0 0 auto;
+        width: 3.3rem;
+        @include font(1.3rem, 400, 1.8rem);
+    }
+}
+
+.select-claim {
+    display: flex;
+    gap: 0.8rem;
+    width: 100%;
+    .btn {
+        padding: 7.7rem 1rem 2.1rem;
+        text-align: center;
+        flex: 1 1;
+        border: 0.1rem solid #eee;
+        border-radius: 1.2rem;
+        @include font(1.6rem, 500, 2.4rem);
+        color: $black-color;
+        background-repeat: no-repeat;
+        background-size: 4.8rem;
+        background-position: top 2.2rem center;
+    }
+    .btn.btn-new-claim {
+        background-image: url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.7562 20.115L15.8336 8.2697C15.3122 7.22692 16.0705 6 17.2364 6L30.9811 6C32.1469 6 32.9052 7.22692 32.3838 8.2697L26.4612 20.115H21.7562Z' fill='%23448AFF'/%3E%3Cpath d='M41.5031 28.6691C41.5031 36.1974 35.2298 41.9998 28.9565 41.9998H19.5466C13.2733 41.9998 7 36.1974 7 28.6691C7 18.9313 14.7238 12.9858 24.2516 12.9858C33.7794 12.9858 41.5031 18.9313 41.5031 28.6691Z' fill='%23448AFF'/%3E%3Cpath d='M24.2208 22.895C24.5383 22.895 24.8651 22.9839 25.1384 23.1882C25.3698 23.3611 25.5668 23.6172 25.6801 23.9842L27.2486 29.6128L28.7745 23.8146C28.8665 23.4511 29.0715 23.2049 29.3292 23.0577C29.5979 22.9042 29.9342 22.8585 30.2847 22.9323C30.6499 23.0058 30.9099 23.1939 31.0641 23.4438C31.2174 23.692 31.2718 24.0128 31.1806 24.3803L30.3788 27.2293L32.0358 27.2295C32.3666 27.2295 32.6662 27.3626 32.883 27.578C33.0999 27.7933 33.234 28.0907 33.234 28.4193C33.234 28.7478 33.0999 29.0452 32.883 29.2606C32.6662 29.4759 32.3666 29.609 32.0357 29.609L29.7088 29.6089L28.7349 33.0672C28.6318 33.4415 28.4439 33.7056 28.2204 33.8869C27.9521 34.1045 27.627 34.2045 27.3075 34.2137C26.9571 34.2142 26.6233 34.1248 26.3478 33.9191C26.1106 33.7421 25.9115 33.4779 25.798 33.0931L24.1989 27.1675L22.5411 33.0671C22.4355 33.4507 22.2376 33.7191 22.0023 33.9011C21.7196 34.1199 21.3771 34.2144 21.0502 34.2144C20.7237 34.2144 20.3938 34.1249 20.1193 33.919C19.8861 33.744 19.6886 33.4841 19.5754 33.109L18.6014 29.6089L16.1826 29.609C15.8517 29.609 15.5522 29.4759 15.3353 29.2606C15.1185 29.0452 14.9844 28.7478 14.9844 28.4193C14.9844 28.0907 15.1185 27.7933 15.3353 27.578C15.5522 27.3626 15.8517 27.2295 16.1826 27.2295L17.9397 27.2293L17.1852 24.5163C17.0769 24.1341 17.1228 23.807 17.2658 23.548C17.4166 23.2748 17.6828 23.0665 18.0482 22.9635C18.4295 22.8708 18.7835 22.8728 19.0675 22.9975C19.339 23.1167 19.5656 23.3402 19.683 23.7363L21.1712 29.6071L22.7296 24.0434C22.8359 23.6564 23.0327 23.387 23.2679 23.2049C23.5465 22.9894 23.8855 22.895 24.2208 22.895Z' fill='white'/%3E%3Cpath d='M15.4844 12.6299C15.4844 11.9999 15.995 11.4893 16.625 11.4893H31.5953C32.2253 11.4893 32.7359 11.9999 32.7359 12.6299V13.4853C32.7359 14.1152 32.2253 14.6259 31.5953 14.6259H16.625C15.995 14.6259 15.4844 14.1152 15.4844 13.4853V12.6299Z' fill='%238BCAFF'/%3E%3C/svg%3E%0A");
+    }
+    .btn.btn-add-claim {
+        background-image: url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.00008 7.02629C7.00008 5.35492 8.45515 4 10.2501 4H29.75C31.5449 4 33 5.35492 33 7.02629L32.9999 35.1611C32.9999 35.6962 32.7716 36.2094 32.3653 36.5877L31.166 37.7045C30.7429 38.0985 30.057 38.0985 29.6339 37.7045L27.7999 35.9968L25.966 37.7045C25.5429 38.0985 24.857 38.0985 24.4339 37.7045L22.6 35.9968L20.766 37.7045C20.3429 38.0985 19.657 38.0985 19.2339 37.7045L17.4 35.9968L15.566 37.7045C15.1429 38.0985 14.457 38.0985 14.0339 37.7045L12.2 35.9968L10.366 37.7045C9.94296 38.0985 9.25703 38.0985 8.83396 37.7045L7.6346 36.5877C7.22827 36.2094 7 35.6962 7 35.1611L7.00008 7.02629Z' fill='%23C3CFDE'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M26.5 9.57129C27.3284 9.57129 28 10.2429 28 11.0713C28 11.8997 27.3284 12.5713 26.5 12.5713L13.5 12.5713C12.6716 12.5713 12 11.8997 12 11.0713C12 10.2429 12.6716 9.57129 13.5 9.57129L26.5 9.57129Z' fill='white'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M20.5 16.5713C21.3284 16.5713 22 17.2429 22 18.0713C22 18.8997 21.3284 19.5713 20.5 19.5713H13.5C12.6716 19.5713 12 18.8997 12 18.0713C12 17.2429 12.6716 16.5713 13.5 16.5713H20.5Z' fill='white'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M18.5 23.5713C19.3284 23.5713 20 24.2429 20 25.0713C20 25.8997 19.3284 26.5713 18.5 26.5713H13.5C12.6716 26.5713 12 25.8997 12 25.0713C12 24.2429 12.6716 23.5713 13.5 23.5713H18.5Z' fill='white'/%3E%3Cpath d='M31 43.5C35.9706 43.5 40 39.4706 40 34.5C40 29.5294 35.9706 25.5 31 25.5C26.0294 25.5 22 29.5294 22 34.5C22 39.4706 26.0294 43.5 31 43.5Z' fill='%23448AFF'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M34.5 33C35.3284 33 36 33.6716 36 34.5C36 35.3284 35.3284 36 34.5 36H27.5C26.6716 36 26 35.3284 26 34.5C26 33.6716 26.6716 33 27.5 33H34.5Z' fill='white'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M29.5 31C29.5 30.1716 30.1716 29.5 31 29.5C31.8284 29.5 32.5 30.1716 32.5 31V38C32.5 38.8284 31.8284 39.5 31 39.5C30.1716 39.5 29.5 38.8284 29.5 38V31Z' fill='white'/%3E%3C/svg%3E%0A");
+    }
+}
+
+.claim-home-list {
+    > li + li {
+        margin-top: 1.2rem;
+    }
+    a {
+        padding: 3rem 10rem 3rem 2.4rem;
+        display: block;
+        background-color: #f6f8fa;
+        border-radius: 1.2rem;
+        color: $text-sub-color;
+        background-repeat: no-repeat;
+        background-position: right 2.4rem center;
+        background-size: 8.2rem 7.6rem;
+        strong {
+            color: $base-txt-color;
+            display: block;
+            @include font(1.8rem, 700, 2.6rem);
+        }
+        span {
+            margin-top: 0.4rem;
+            display: block;
+            @include font(1.4rem, 400, 2rem);
+        }
+    }
+    .item-1 a {
+        background-image: url(/img/ico/ico_claim_home_01.png);
+    }
+    .item-2 a {
+        background-image: url(/img/ico/ico_claim_home_02.png);
+    }
+    .item-3 a {
+        background-image: url(/img/ico/ico_claim_home_03.png);
+    }
+    .item-4 a {
+        background-image: url(/img/ico/ico_claim_home_04.png);
+    }
+}
+
+.popup.claim-noti-mobile {
+    .pop-body {
+        padding-bottom: 0;
+    }
+    .bottom-fixed > .btn-wrap {
+        padding-top: 0;
+        &::before {
+            display: none;
+        }
+    }
+    .img-wrap {
+        margin-top: 2.4rem;
+    }
+}
+
+// 실손24 공지사항 팝업
+.notice-img {
+    text-align: center;
+    img {
+        width: auto;
+        max-width: 100%;
+        width: 40rem;
+    }
+}
+
+.att-type-list {
+    margin-bottom: 2rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 2.4rem;
+    color: $base-txt-color;
+    & > li {
+        display: flex;
+        align-items: center;
+        &:before {
+            content: "";
+            display: inline-block;
+            width: 4.8rem;
+            height: 4.8rem;
+            background-color: #f6f8fa;
+            border-radius: 50%;
+            margin-right: 1.2rem;
+            flex: none;
+            background-size: 2.4rem;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        & + li {
+            margin-top: 2rem;
+        }
+        &.pharmaceuticalYn:before {
+            background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10.0149 3.65165C8.55047 2.18718 6.1761 2.18718 4.71163 3.65165L3.65097 4.71231C2.18651 6.17678 2.18651 8.55114 3.65097 10.0156L8.7775 15.1421L15.1415 8.77817L10.0149 3.65165Z' fill='%23FFD200'/%3E%3Cpath d='M13.903 20.2688C15.3675 21.7332 17.7419 21.7332 19.2063 20.2688L20.267 19.2081C21.7315 17.7436 21.7315 15.3693 20.267 13.9048L15.1405 8.77828L8.77651 15.1422L13.903 20.2688Z' fill='%23F95981'/%3E%3C/svg%3E%0A");
+        }
+        &.hospitalizationYn:before {
+            background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.0391 17H3.03906V18.5H21.0391V17Z' fill='%235A5B63'/%3E%3Cpath d='M3.03906 14V17H21.0391V14H3.03906Z' fill='%23C7DEFF'/%3E%3Cpath d='M4 11.0229V14H9C6.68765 10.6742 4.13515 11.0229 4 11.0229Z' fill='%2342A4F6'/%3E%3Cpath d='M19.9919 18.5342V20.1937C19.9922 20.3003 20.0347 20.4024 20.1101 20.4778C20.1854 20.5532 20.2875 20.5956 20.3941 20.5959H21.0978C21.2044 20.5956 21.3065 20.5532 21.3819 20.4778C21.4572 20.4024 21.4997 20.3003 21.5 20.1937V12.8541C21.4969 12.6561 21.4161 12.4674 21.275 12.3285C21.1339 12.1896 20.9439 12.1118 20.746 12.1118C20.548 12.1118 20.358 12.1896 20.2169 12.3285C20.0759 12.4674 19.9951 12.6561 19.9919 12.8541V18.5342Z' fill='%23448AFF'/%3E%3Cpath d='M4.11328 8.96731V8.7905C4.11323 8.59054 4.03379 8.39879 3.89241 8.25738C3.75104 8.11597 3.5593 8.03648 3.35934 8.03638H3.35728C3.15732 8.03648 2.96558 8.11597 2.82421 8.25738C2.68284 8.39879 2.60339 8.59054 2.60334 8.7905V20.1937C2.60364 20.3003 2.64611 20.4024 2.72147 20.4778C2.79683 20.5531 2.89895 20.5956 3.00553 20.5959H3.71128C3.81782 20.5955 3.9199 20.553 3.99522 20.4777C4.07054 20.4023 4.11298 20.3002 4.11328 20.1937V17.1937H4.11141V14.1108H4.11328V8.96731Z' fill='%23448AFF'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M13.7159 5.86328C14.1489 5.86328 14.5 6.21434 14.5 6.64738V6.64738C14.5 7.08043 14.1489 7.43149 13.7159 7.43149L10.0567 7.43149C9.6237 7.43149 9.27264 7.08043 9.27264 6.64738V6.64738C9.27264 6.21434 9.6237 5.86328 10.0567 5.86328L13.7159 5.86328Z' fill='%2304C3A1'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M11.1016 4.8178C11.1016 4.38475 11.4526 4.03369 11.8857 4.03369V4.03369C12.3187 4.03369 12.6698 4.38475 12.6698 4.8178V8.47695C12.6698 8.90999 12.3187 9.26105 11.8857 9.26105V9.26105C11.4526 9.26105 11.1016 8.91 11.1016 8.47695L11.1016 4.8178Z' fill='%2304C3A1'/%3E%3Cpath d='M14.505 5.48141H13.2793V4.25577C13.2793 3.70709 12.833 3.26074 12.2843 3.26074H11.7157C11.167 3.26074 10.7207 3.70709 10.7207 4.25577V5.48141H9.49503C8.94634 5.48141 8.5 5.92776 8.5 6.47645V7.04504C8.5 7.59373 8.94634 8.04007 9.49503 8.04007H10.7207V9.26571C10.7207 9.8144 11.167 10.2607 11.7157 10.2607H12.2843C12.833 10.2607 13.2793 9.8144 13.2793 9.26571V8.04007H14.505C15.0537 8.04007 15.5 7.59373 15.5 7.04504V6.47645C15.5 5.92776 15.0537 5.48141 14.505 5.48141Z' fill='%2304C3A1'/%3E%3C/svg%3E%0A");
+        }
+        &.ambulatoryCareYn:before {
+            background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='19.5' y='2.5' width='19' height='15' rx='3' transform='rotate(90 19.5 2.5)' fill='%23FCD4C5'/%3E%3Cpath d='M15.5684 18.2835H8.77682C8.59669 18.2835 8.42394 18.2119 8.29658 18.0845C8.16921 17.9572 8.09766 17.7844 8.09766 17.6043C8.09766 17.4242 8.16921 17.2514 8.29658 17.1241C8.42394 16.9967 8.59669 16.9251 8.77682 16.9251H15.5684C15.7485 16.9251 15.9213 16.9967 16.0486 17.1241C16.176 17.2514 16.2476 17.4242 16.2476 17.6043C16.2476 17.7844 16.176 17.9572 16.0486 18.0845C15.9213 18.2119 15.7485 18.2835 15.5684 18.2835ZM15.5684 15.5668H8.77682C8.59669 15.5668 8.42394 15.4953 8.29658 15.3679C8.16921 15.2405 8.09766 15.0678 8.09766 14.8877C8.09766 14.7075 8.16921 14.5348 8.29658 14.4074C8.42394 14.2801 8.59669 14.2085 8.77682 14.2085H15.5684C15.7485 14.2085 15.9213 14.2801 16.0486 14.4074C16.176 14.5348 16.2476 14.7075 16.2476 14.8877C16.2476 15.0678 16.176 15.2405 16.0486 15.3679C15.9213 15.4953 15.7485 15.5668 15.5684 15.5668Z' fill='white'/%3E%3Cpath d='M11.4935 12.6899C11.3816 12.6893 11.2716 12.6611 11.1733 12.6078C11.0749 12.5544 10.9913 12.4777 10.9297 12.3842L9.76839 10.6524H7.77682C7.59669 10.6524 7.42394 10.5808 7.29658 10.4535C7.16921 10.3261 7.09766 10.1533 7.09766 9.97322C7.09766 9.79309 7.16921 9.62035 7.29658 9.49298C7.42394 9.36561 7.59669 9.29406 7.77682 9.29406H10.1351C10.247 9.29464 10.357 9.32284 10.4553 9.37615C10.5537 9.42947 10.6373 9.50625 10.6988 9.59968L11.344 10.5573L12.2202 8.36361C12.2699 8.25101 12.3493 8.15405 12.45 8.08311C12.5506 8.01216 12.6686 7.9699 12.7913 7.96083C12.9141 7.95176 13.037 7.97623 13.147 8.03163C13.2569 8.08702 13.3497 8.17125 13.4155 8.27532L14.5768 10.0072H16.5684C16.7485 10.0072 16.9213 10.0787 17.0486 10.2061C17.176 10.3335 17.2476 10.5062 17.2476 10.6863C17.2476 10.8665 17.176 11.0392 17.0486 11.1666C16.9213 11.2939 16.7485 11.3655 16.5684 11.3655H14.2101C14.0982 11.3649 13.9882 11.3367 13.8899 11.2834C13.7916 11.2301 13.7079 11.1533 13.6464 11.0599L12.9672 10.1023L12.0911 12.2959C12.0446 12.4109 11.9674 12.5109 11.868 12.5852C11.7687 12.6594 11.6484 12.6778 11.5249 12.6899H11.4935Z' fill='%23F95981'/%3E%3Cpath d='M9.5 4V5.15455H14.7364V4' stroke='%235A5B63' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+        }
+        &.surgeryYn:before {
+            background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M19 15.25V18.83C19 20.21 17.88 21.33 16.5 21.33H14.5C13.12 21.33 12 20.21 12 18.83V17.5H10.5V18.83C10.5 21.04 12.29 22.83 14.5 22.83H16.5C18.71 22.83 20.5 21.04 20.5 18.83V15.25C20.5 14.835 20.165 14.5 19.75 14.5C19.335 14.5 19 14.835 19 15.25Z' fill='%23448AFF'/%3E%3Cpath d='M4.5 4.5C4.5 2.84315 5.84315 1.5 7.5 1.5H15C16.6569 1.5 18 2.84315 18 4.5V10.75C18 14.4779 14.9779 17.5 11.25 17.5V17.5C7.52208 17.5 4.5 14.4779 4.5 10.75V4.5Z' fill='%23CFDEF3'/%3E%3Cpath d='M6 8C6 7.44772 6.44772 7 7 7H15.5C16.0523 7 16.5 7.44772 16.5 8V10.75C16.5 13.6495 14.1495 16 11.25 16V16C8.35051 16 6 13.6495 6 10.75V8Z' fill='%23448AFF'/%3E%3Cpath d='M9.5 15H13V17.25C13 18.2165 12.2165 19 11.25 19V19C10.2835 19 9.5 18.2165 9.5 17.25V15Z' fill='%23448AFF'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.875 9C11.2202 9 11.5 9.27982 11.5 9.625V9.625C11.5 9.97018 11.2202 10.25 10.875 10.25H8.125C7.77982 10.25 7.5 9.97018 7.5 9.625V9.625C7.5 9.27982 7.77982 9 8.125 9H10.875Z' fill='white'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9.875 11.5C10.2202 11.5 10.5 11.7798 10.5 12.125V12.125C10.5 12.4702 10.2202 12.75 9.875 12.75H8.125C7.77982 12.75 7.5 12.4702 7.5 12.125V12.125C7.5 11.7798 7.77982 11.5 8.125 11.5H9.875Z' fill='white'/%3E%3C/svg%3E%0A");
+        }
+        &.diagnoseYn:before {
+            background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.00004 3.51314C4.00004 2.67746 4.72758 2 5.62504 2H15.375C16.2725 2 17 2.67746 17 3.51314L17 17.5806C17 17.8481 16.8858 18.1047 16.6827 18.2939L16.083 18.8523C15.8714 19.0492 15.5285 19.0492 15.3169 18.8523L14.4 17.9984L13.483 18.8523C13.2715 19.0492 12.9285 19.0492 12.717 18.8523L11.8 17.9984L10.883 18.8523C10.6715 19.0492 10.3285 19.0492 10.117 18.8523L9.19998 17.9984L8.283 18.8523C8.07147 19.0492 7.72851 19.0492 7.51697 18.8523L6.59999 17.9984L5.68301 18.8523C5.47148 19.0492 5.12851 19.0492 4.91698 18.8523L4.3173 18.2939C4.11414 18.1047 4 17.8481 4 17.5806L4.00004 3.51314Z' fill='%23C3CFDE'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M13.75 4.78564C14.1642 4.78564 14.5 5.12143 14.5 5.53564V5.53564C14.5 5.94986 14.1642 6.28564 13.75 6.28564L7.25 6.28564C6.83579 6.28564 6.5 5.94986 6.5 5.53564V5.53564C6.5 5.12143 6.83579 4.78564 7.25 4.78564L13.75 4.78564Z' fill='white'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.75 8.28564C11.1642 8.28564 11.5 8.62143 11.5 9.03564V9.03564C11.5 9.44986 11.1642 9.78564 10.75 9.78564H7.25C6.83579 9.78564 6.5 9.44986 6.5 9.03564V9.03564C6.5 8.62143 6.83579 8.28564 7.25 8.28564H10.75Z' fill='white'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9.75 11.7856C10.1642 11.7856 10.5 12.1214 10.5 12.5356V12.5356C10.5 12.9499 10.1642 13.2856 9.75 13.2856H7.25C6.83579 13.2856 6.5 12.9499 6.5 12.5356V12.5356C6.5 12.1214 6.83579 11.7856 7.25 11.7856H9.75Z' fill='white'/%3E%3Cpath d='M12 18.1747C12 20.3771 14.9091 22 16 22C17.0909 22 20 20.3771 20 18.1747C20 17.0153 20 15.9661 20 15.2323C20 14.5977 19.5901 14.0364 18.9865 13.844L16.6615 13.1029C16.2311 12.9657 15.7689 12.9657 15.3385 13.1029L13.0135 13.844C12.4099 14.0364 12 14.5977 12 15.2323C12 15.9661 12 17.0153 12 18.1747Z' fill='%23F95981'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M17.75 16.75C18.1642 16.75 18.5 17.0858 18.5 17.5V17.5C18.5 17.9142 18.1642 18.25 17.75 18.25H14.25C13.8358 18.25 13.5 17.9142 13.5 17.5V17.5C13.5 17.0858 13.8358 16.75 14.25 16.75H17.75Z' fill='white'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15.25 15.75C15.25 15.3358 15.5858 15 16 15V15C16.4142 15 16.75 15.3358 16.75 15.75V19.25C16.75 19.6642 16.4142 20 16 20V20C15.5858 20 15.25 19.6642 15.25 19.25V15.75Z' fill='white'/%3E%3C/svg%3E%0A");
+        }
+        &.obstacleYn:before {
+            background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8.6521 13.2009C8.78043 13.4604 8.97545 13.6625 9.20679 13.7961C9.43813 13.9296 9.71063 13.9975 9.99955 13.9788L10.0057 13.9785L11.5628 13.8845C11.5638 13.8845 11.5647 13.8844 11.5656 13.8843C12.8233 13.8023 13.9371 13.1029 14.5627 12.0193L17.2044 7.44381L10.7092 3.69381L8.06753 8.26932C7.44191 9.35291 7.39312 10.6671 7.95087 11.7973C7.9513 11.7982 7.95173 11.799 7.95216 11.7999L8.6521 13.2009ZM6.76849 7.51932C5.89349 9.03486 5.82449 10.881 6.60755 12.4647L7.30749 13.8657C7.56851 14.3936 7.97182 14.8151 8.45679 15.0951C8.94176 15.3751 9.50841 15.5136 10.0961 15.4757L11.6594 15.3814C13.4224 15.2677 14.9868 14.2849 15.8618 12.7693L19.2534 6.89478L10.1602 1.64478L6.76849 7.51932Z' fill='%238C9BAE'/%3E%3Crect x='8.52344' y='6.47485' width='8.5' height='1.5' transform='rotate(30 8.52344 6.47485)' fill='%238C9BAE'/%3E%3Crect x='9.35547' y='15.0371' width='5' height='1.5' transform='rotate(120 9.35547 15.0371)' fill='%238C9BAE'/%3E%3Crect x='9.35938' y='0.0288086' width='13.5' height='2.5' rx='1.25' transform='rotate(30 9.35938 0.0288086)' fill='%23438CF9'/%3E%3Cpath d='M3.13281 18.8712C3.6851 17.9146 4.90828 17.5869 5.86486 18.1392L7.1639 18.8892C8.12049 19.4414 8.44824 20.6646 7.89595 21.6212V21.6212C7.75788 21.8604 7.45209 21.9423 7.21294 21.8042L3.31582 19.5542C3.07668 19.4162 2.99474 19.1104 3.13281 18.8712V18.8712Z' fill='%238C9BAE'/%3E%3Cpath d='M16.5 21.75C18.9853 21.75 21 19.7353 21 17.25C21 14.7647 18.9853 12.75 16.5 12.75C14.0147 12.75 12 14.7647 12 17.25C12 19.7353 14.0147 21.75 16.5 21.75Z' fill='%2304C3A1'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M18.25 16.5C18.6642 16.5 19 16.8358 19 17.25V17.25C19 17.6642 18.6642 18 18.25 18H14.75C14.3358 18 14 17.6642 14 17.25V17.25C14 16.8358 14.3358 16.5 14.75 16.5H18.25Z' fill='white'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15.75 15.5C15.75 15.0858 16.0858 14.75 16.5 14.75V14.75C16.9142 14.75 17.25 15.0858 17.25 15.5V19C17.25 19.4142 16.9142 19.75 16.5 19.75V19.75C16.0858 19.75 15.75 19.4142 15.75 19V15.5Z' fill='white'/%3E%3C/svg%3E%0A");
+        }
+        &.etc:before {
+            background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.5 15.5C15.5 13.8431 16.8431 12.5 18.5 12.5H20.5C21.6046 12.5 22.5 13.3954 22.5 14.5V21.5H18.5C16.8431 21.5 15.5 20.1569 15.5 18.5V15.5Z' fill='%23C3CFDE'/%3E%3Cpath d='M1.5 14.5C1.5 13.3954 2.39543 12.5 3.5 12.5H5.5C7.15685 12.5 8.5 13.8431 8.5 15.5V18.5C8.5 20.1569 7.15685 21.5 5.5 21.5H1.5V14.5Z' fill='%23C3CFDE'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7.5 2.5C5.84315 2.5 4.5 3.84315 4.5 5.5V21.5H10V16.5H14V21.5H19.5V5.5C19.5 3.84315 18.1569 2.5 16.5 2.5H7.5Z' fill='%2394A9C7'/%3E%3Cpath d='M14.505 7.72067H13.2793V6.49503C13.2793 5.94634 12.833 5.5 12.2843 5.5H11.7157C11.167 5.5 10.7207 5.94634 10.7207 6.49503V7.72067H9.49503C8.94634 7.72067 8.5 8.16702 8.5 8.71571V9.28429C8.5 9.83298 8.94634 10.2793 9.49503 10.2793H10.7207V11.505C10.7207 12.0537 11.167 12.5 11.7157 12.5H12.2843C12.833 12.5 13.2793 12.0537 13.2793 11.505V10.2793H14.505C15.0537 10.2793 15.5 9.83298 15.5 9.28429V8.71571C15.5 8.16702 15.0537 7.72067 14.505 7.72067Z' fill='white'/%3E%3C/svg%3E%0A");
+        }
+    }
+}
+
+.list-box.type-insurance {
+    .ico-bank {
+        align-self: flex-start;
+    }
+    label.singleType input,
+    label.singleType .lbl {
+        top: 2rem;
+        transform: none;
+        @include media-min-width(1025) {
+            top: 2.4rem;
+        }
+    }
+    & > li {
+        .txt {
+            gap: 0;
+
+            strong + .tit {
+                margin-top: 0.4rem;
+                @include media-min-width(1025) {
+                    margin-top: 0.6rem;
+                }
+            }
+        }
+    }
+}
+
+.map-search-wrap {
+    position: fixed;
+    top: 7.2rem;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    @include media-min-width(1025) {
+        position: relative;
+        height: 50rem;
+    }
+    .bg1 {
+        background-color: #444;
+    }
+    .map-search {
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+        right: 2rem;
+        z-index: 101;
+    }
+    .badge-icon {
+        position: absolute;
+        border-radius: 0.6rem;
+        border: 0;
+        left: 50%;
+        bottom: 12.4rem;
+        text-align: center;
+        text-wrap: nowrap;
+        z-index: 101;
+        @include font(1.6rem, 500, 2.4rem);
+        padding: 1rem 2rem;
+        transform: translateX(-50%);
+        &.dark {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: $white-color;
+        }
+        &.type1 {
+            bottom: 3.4rem;
+            text-wrap: wrap;
+        }
+        @include media-min-width(1025) {
+            bottom: 3.4rem;
+            br {
+                display: none;
+            }
+        }
+    }
+
+    .bottom-fixed.type-radius {
+        .btn-wrap {
+            border-radius: 3.2rem 3.2rem 0 0;
+            padding: 3.2rem 0 0;
+            z-index: 101;
+        }
+
+        .btn-wrap:before {
+            display: none;
+        }
+        @include media-min-width(1025) {
+            padding-top: 4rem;
+            position: absolute;
+        }
+    }
+}
+.ios {
+    .map-search-wrap {
+        .bottom-fixed.type-radius {
+            .btn-wrap {
+                padding-bottom: 1.2rem;
+            }
+        }
+    }
+}
+
+.map-hospital-bottom {
+    position: fixed;
+    bottom: 0;
+    z-index: 101;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    @include media-min-width(1025) {
+        position: absolute;
+    }
+    .btn-currentPosition {
+        position: absolute;
+        top: -6.8rem;
+        right: 2rem;
+        z-index: 101;
+    }
+    .bottom-fixed.type-radius {
+        position: static;
+        padding-top: 0;
+        .btn-wrap {
+            position: static;
+        }
+    }
+    .bottom-fixed {
+        position: static !important;
+    }
+}
+
+.map-hospital-list {
+    padding: 0 2rem 2rem;
+    max-height: 19rem;
+    min-height: 8.2rem;
+    overflow: auto;
+    @include media-min-width(1025) {
+        padding: 0 4rem 3.2rem;
+        max-height: 21rem;
+    }
+    & > li {
+        display: flex;
+        gap: 2rem;
+        & + li {
+            margin-top: 2rem;
+        }
+        & > .btn {
+            flex-shrink: 0;
+            align-self: center;
+        }
+        .hospital-info {
+            flex-basis: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            word-break: break-all;
+            .name {
+                font-size: 1.8rem;
+                font-weight: 700;
+                line-height: 2.6rem;
+                color: $base-txt-color;
+                @include media-min-width(1025) {
+                    font-size: 2rem;
+                    line-height: 2.8rem;
+                }
+            }
+            .addr {
+                color: $text-sub-color;
+                font-size: 1.4rem;
+                font-weight: 400;
+                line-height: 2rem;
+                @include media-min-width(1025) {
+                    font-size: 1.6rem;
+                    line-height: 2.4rem;
+                }
+            }
+        }
+    }
+}
+
+/*** 실손청구페이지 끝 ***/
