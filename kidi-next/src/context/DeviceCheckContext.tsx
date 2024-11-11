@@ -46,7 +46,9 @@ export function DeviceProvider({ children }: { children: ReactNode }) {
 
     return (
         <DeviceContext.Provider value={device}>
-            {children}
+            <div id="wrap" className="pcSize">
+                {children}
+            </div>
         </DeviceContext.Provider>
     );
 }
