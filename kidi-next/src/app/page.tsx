@@ -1,5 +1,6 @@
 import MainSwiper from "@/components/swiper/MainSwiper";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
     return (
@@ -70,9 +71,12 @@ export default function Home() {
                             </span>
                             {/* WA-09-02 - alt 값 삭제  */}
                             <i className="img-wrap">
-                                <img
+                                <Image
                                     src="/img/img/img-mainIcon-item1.png"
                                     alt=""
+                                    width={158}
+                                    height={131}
+                                    priority={true}
                                 />
                             </i>
                         </div>
@@ -92,9 +96,12 @@ export default function Home() {
                             </span>
                             <i className="img-wrap">
                                 {/* WA-09-02 - alt 값 삭제  */}
-                                <img
+                                <Image
                                     src="/img/img/img-mainIcon-item3.png"
                                     alt=""
+                                    width={82}
+                                    height={76}
+                                    priority={true}
                                 />
                             </i>
                         </div>
@@ -113,9 +120,12 @@ export default function Home() {
                                 </span>
                                 <i className="img-wrap">
                                     {/* WA-09-02 - alt 값 삭제  */}
-                                    <img
+                                    <Image
                                         src="/img/img/img-mainIcon-item2.png"
                                         alt=""
+                                        width={82}
+                                        height={76}
+                                        priority={true}
                                     />
                                 </i>
                             </div>
@@ -135,9 +145,12 @@ export default function Home() {
                                 <i className="img-wrap">
                                     {/* WA-09-02 - alt 값 삭제  */}
                                     {/* 10-15 이미지 수정 */}
-                                    <img
+                                    <Image
                                         src="/img/img/img-mainIcon-item5.png"
                                         alt=""
+                                        width={82}
+                                        height={76}
+                                        priority={true}
                                     />
                                 </i>
                             </div>
@@ -162,9 +175,12 @@ export default function Home() {
                                 </span>
                                 <i className="img-wrap">
                                     {/* WA-09-02 alt 삭제 */}
-                                    <img
+                                    <Image
                                         src="/img/img/img-mainIcon-item4.png"
                                         alt=""
+                                        width={82}
+                                        height={76}
+                                        priority={true}
                                     />
                                 </i>
                             </div>

@@ -48,55 +48,53 @@ export default function Header() {
     };
 
     return (
-        <header id="header" className="header">
-            <div className="inner">
-                <h1 id="logo">
-                    <Link href="/" title="홈페이지 바로가기" tabIndex={0}>
-                        <span className="logo" aria-hidden="true" />
-                        <span className="blind">실손24</span>
-                    </Link>
-                </h1>
+        <div className="inner">
+            <h1 id="logo">
+                <Link href="/" title="홈페이지 바로가기" tabIndex={0}>
+                    <span className="logo" aria-hidden="true" />
+                    <span className="blind">실손24</span>
+                </Link>
+            </h1>
 
-                <div className="right">
-                    <div className="checkbox toggle-type-1 sizeModeType">
-                        <label htmlFor="sizeMode">
-                            <input
-                                type="checkbox"
-                                id="sizeMode"
-                                className="lg-sizeToggle"
-                                onChange={toggleLgSize}
-                                checked={isLargeSize}
-                            />
-                            <i aria-hidden="true" className="lbl" />
-                            <span className="status-info">큰 글자보기</span>
-                        </label>
-                    </div>
-
-                    <button
-                        type="button"
-                        title="알람 팝업 열기"
-                        aria-controls="alertListPop"
-                        onClick={toggleAlertPop}
-                        className={classNames("btn-alarm btn", {
-                            on: true, // 알람 있을 때 조건 추가 필요
-                        })}
-                    >
-                        <strong className="blind">
-                            알람 확인 버튼 (새 알람 있음)
-                        </strong>
-                    </button>
-
-                    <button
-                        type="button"
-                        aria-label="전체메뉴 열기"
-                        className="btn-menu btn"
-                        onClick={toggleGnb}
-                    >
-                        <strong className="blind">전체메뉴</strong>
-                        <span aria-hidden="true" className="gnb-icon" />
-                    </button>
+            <div className="right">
+                <div className="checkbox toggle-type-1 sizeModeType">
+                    <label htmlFor="sizeMode">
+                        <input
+                            type="checkbox"
+                            id="sizeMode"
+                            className="lg-sizeToggle"
+                            onChange={toggleLgSize}
+                            checked={isLargeSize}
+                        />
+                        <i aria-hidden="true" className="lbl" />
+                        <span className="status-info">큰 글자보기</span>
+                    </label>
                 </div>
+
+                <button
+                    type="button"
+                    title="알람 팝업 열기"
+                    aria-controls="alertListPop"
+                    onClick={toggleAlertPop}
+                    className={classNames("btn-alarm btn", {
+                        on: true, // 알람 있을 때 조건 추가 필요
+                    })}
+                >
+                    <strong className="blind">
+                        알람 확인 버튼 (새 알람 있음)
+                    </strong>
+                </button>
+
+                <button
+                    type="button"
+                    aria-label="전체메뉴 열기"
+                    className="btn-menu btn"
+                    onClick={toggleGnb}
+                >
+                    <strong className="blind">전체메뉴</strong>
+                    <span aria-hidden="true" className="gnb-icon" />
+                </button>
             </div>
-        </header>
+        </div>
     );
 }
