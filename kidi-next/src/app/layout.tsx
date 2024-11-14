@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import ClientLayout from "@/components/layout/ClientLayout";
+import GnbMobile from "@/components/layout/GnbMobile";
 import "@/styles/scss/front.scss"; // scss 임포트를 이렇게 하는듯 , assets폴더에서 > styles 로 변경(img 폴더와 폰트 폴더는 public으로 보냈기 때문에)
 
 export const metadata: Metadata = {
@@ -27,6 +28,7 @@ export default function RootLayout({
                     url 진입시에 디바이스 체크를 위해 client layout 분기
                 */}
                 <ClientLayout>{children}</ClientLayout>
+                <GnbMobile></GnbMobile>
             </body>
         </html>
     );

@@ -1,11 +1,31 @@
+"use client";
+import { useDevice } from "@/context/DeviceCheckContext";
 import MainSwiper from "@/components/swiper/MainSwiper";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function Home() {
+    const { isMobile } = useDevice();
     return (
         <div className="inner">
             <div className="main-top">
+                {!isMobile ? (
+                    ""
+                ) : (
+                    <div className="user-info">
+                        <h2>
+                            <Link
+                                href="/login/loginEasy"
+                                className="link-arrow"
+                            >
+                                로그인
+                            </Link>
+                        </h2>
+                        {/* 로그인 후 */}
+                        {/* <h2 class="user-name">김보험님 안녕하세요.</h2> */}
+                        <p className="welcome-txt">실손24에 오신걸 환영해요.</p>
+                    </div>
+                )}
                 <MainSwiper />
                 <div className="main-claim-list">
                     <ul>
@@ -56,7 +76,6 @@ export default function Home() {
                     </ul>
                 </div>
             </div>
-
             <div className="main-banner-wrap">
                 <div className="upper-banner">
                     {/* WA-09-02 role 추가 */}

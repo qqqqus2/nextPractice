@@ -34,6 +34,15 @@ export function DeviceProvider({ children }: { children: ReactNode }) {
                 // isTablet: width >= 768 && width < 1024,
                 isDesktop: width >= 1024,
             });
+
+            const wrapElement = document.getElementById("wrap");
+            if (wrapElement) {
+                if (width < 1025) {
+                    wrapElement.classList.remove("pcSize");
+                } else {
+                    wrapElement.classList.add("pcSize");
+                }
+            }
         };
 
         // 초기 체크

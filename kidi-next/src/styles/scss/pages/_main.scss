@@ -41,7 +41,7 @@
         //height: 36rem;
         position: relative;
         flex: 1 1 auto;
-        margin-top: 3.2rem;
+        // margin-top: 3.2rem;
         min-height: 20rem;
         width: 100%;
         @include media-min-width(1025) {
@@ -225,6 +225,7 @@
     .user-info {
         width: 100%;
         margin-top: 1.6rem;
+        margin-bottom: 3.2rem;
         .link-arrow,
         .user-name {
             font-size: 2.2rem;

@@ -178,7 +178,61 @@ export default function HeaderMobile() {
             </ul>
 
             {/* Footer 부분은 동일하게 유지 */}
-            <div className="m-footer">{/* ... 이전 Footer 코드 ... */}</div>
+            <div className="m-footer">
+                <div className="footer-logo">
+                    <span className="blind">보험 개발원</span>
+                </div>
+                <ul className="footer-nav">
+                    <li className="">
+                        <Link href="#none" title="">
+                            <strong>개인정보처리방침</strong>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="#none" title="">
+                            사이트이용약관
+                        </Link>
+                    </li>
+                </ul>
+                <ul className="footer-nav">
+                    <li>
+                        <Link
+                            href="https://www.fss.or.kr/fss/main/contents.do?menuNo=200524"
+                            target="_blank"
+                            title="새창"
+                        >
+                            보험범죄신고센터
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            href="https://privacy.kisa.or.kr/main.do"
+                            target="_blank"
+                            title="새창"
+                        >
+                            개인정보침해신고센터
+                        </Link>
+                    </li>
+                </ul>
+                <div className="flex">
+                    <div className="footer-callCenter">
+                        <span>콜센터</span>
+                        1811-3000
+                    </div>
+                    <div className="footer-youtube">
+                        <div className="youtube-btn">
+                            <Link
+                                href="#none"
+                                target="_blank"
+                                title="새창열림"
+                                className="btn"
+                            >
+                                실손24 유튜브채널 바로가기
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </nav>
     );
 }

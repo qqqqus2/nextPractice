@@ -60,8 +60,11 @@ export default function HeaderPc() {
     };
 
     const handleFontSizeToggle = () => {
-        setIsFontSizeLarge((prev) => !prev);
-        // 실제 폰트 사이즈 변경 로직 추가 필요
+        setIsFontSizeLarge((prev) => {
+            // prev는 현재 상태값, !prev는 변경될 상태값
+            document.documentElement.classList.toggle("lg-size", !prev);
+            return !prev;
+        });
     };
 
     return (
@@ -90,7 +93,7 @@ export default function HeaderPc() {
                     onClick={handleFontSizeToggle}
                     aria-pressed={isFontSizeLarge}
                 >
-                    {isFontSizeLarge ? "원래크기" : "큰 글자"} 보기
+                    {isFontSizeLarge ? "원래크기" : "큰글자"} 보기
                 </button>
             </div>
 
